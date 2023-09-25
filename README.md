@@ -1,4 +1,4 @@
-# human-resources
+# human-resources | Ashure
 18011162, 18011658.
 
 Gestión de Proyectos de Software.
