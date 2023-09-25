@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $contrasenaEncriptada = hash('sha256', $contrasena);
-    $conexion = new mysqli("localhost", "root", "", "Ashure");
+    $conexion = new mysqli("localhost", "root", "", "");
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     }
     $conexion->close();
 }
-$conexion = new mysqli("localhost", "root", "", "Ashure");
+$conexion = new mysqli("localhost", "root", "", "");
 if ($conexion->connect_error) {
     die("Error de conexión:" . $conexion->connect_error);
 }
