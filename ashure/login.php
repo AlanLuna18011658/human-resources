@@ -3,7 +3,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $correoRegistro = $_POST["correoRegistro"];
     $contrasenaRegistro = $_POST["contrasenaRegistro"];
-    $conexion = new mysqli("localhost", "root", "", "");
+    $nombre = $_POST["nombre"];
+    $conexion = new mysqli("localhost", "root", "", "Ashure");
     if ($conexion->connect_error) {
         die("Error de conexión:" . $conexion->connect_error);
     }
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         $errorRegistro = "El correo ya está registrado";
     } else {
         $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
-        $consultaRegistro = "INSERT INTO usuarios (correo, contrasena) VALUES ('$correoRegistro', '$contrasenaEncriptada')";
+        $consultaRegistro = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
         if ($conexion->query($consultaRegistro) === TRUE) {
             header("Location: login.php");
             exit();
@@ -27,13 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $contrasenaEncriptada = hash('sha256', $contrasena);
-    $conexion = new mysqli("localhost", "root", "", "");
+    $conexion = new mysqli("localhost", "root", "", "Ashure");
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
     $consulta = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasenaEncriptada'";
     $resultado = $conexion->query($consulta);
-
     if ($resultado->num_rows == 1) {
         $_SESSION["loggedin"] = true;
         header("Location: index.php");
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     }
     $conexion->close();
 }
-$conexion = new mysqli("localhost", "root", "", "");
+$conexion = new mysqli("localhost", "root", "", "Ashure");
 if ($conexion->connect_error) {
     die("Error de conexión:" . $conexion->connect_error);
 }
@@ -54,13 +54,12 @@ $conexion->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ashure | Login</title>
-    <link rel="icon" href="images/Ashure.ico">
+    <title>Ashure - Inicia sesión</title>
+    <link rel="icon" href="images/ashure.ico">
     <style>
         body {
             background-color: #f2f2f2;
             font-family: Arial, sans-serif;
-            
         }
         .container {
             max-width: 500px;
@@ -146,7 +145,7 @@ $conexion->close();
         <?php } ?>
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-group">
-                <label for="correo">Correo Electrónico:</label>
+                <label for="correo">Correo electrónico:</label>
                 <input type="text" id="correo" name="correo" required>
             </div>
             <div class="form-group">
@@ -167,7 +166,11 @@ $conexion->close();
         <?php } ?>
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-group">
-                <label for="correoRegistro">Correo Electrónico:</label>
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correoRegistro">Correo electrónico:</label>
                 <input type="text" id="correoRegistro" name="correoRegistro" required>
             </div>
             <div class="form-group">

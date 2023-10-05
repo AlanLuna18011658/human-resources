@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-10-2023 a las 05:26:07
+-- Tiempo de generación: 05-10-2023 a las 05:51:07
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `Ashure`
 --
-CREATE DATABASE IF NOT EXISTS `Ashure` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `Ashure`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +29,7 @@ USE `Ashure`;
 
 CREATE TABLE `usuarios` (
   `id` int(100) NOT NULL,
+  `nombre` varchar(64) NOT NULL,
   `correo` varchar(255) NOT NULL,
   `contrasena` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,7 +52,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
