@@ -55,7 +55,7 @@ $conexion->close();
 <html>
 <head>
     <title>Ashure - Inicia sesión</title>
-    <link rel="icon" href="ashure/images/ashure.ico">
+    <link rel="icon" href="ashure.ico">
     <style>
         body {
             background-color: #f2f2f2;
