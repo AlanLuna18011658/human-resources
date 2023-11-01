@@ -73,7 +73,7 @@ require_once "validar_sesion.php";
     </div>
   </div>
 </nav>
-    <!-- Contenido Ashure-->
+    <!-- Contenido Ashure -->
   <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
