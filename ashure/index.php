@@ -1,6 +1,6 @@
 <?php
    require_once "validar_sesion.php";
-   ?>
+?>
 <!doctype html>
 <html lang="en">
    <head>
