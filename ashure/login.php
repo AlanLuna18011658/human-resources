@@ -4,7 +4,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $correoRegistro = $_POST["correoRegistro"];
     $contrasenaRegistro = $_POST["contrasenaRegistro"];
     $nombre = $_POST["nombre"];
+<<<<<<< HEAD
     $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
+=======
+    $conexion = new mysqli("localhost", "root", "", "Ashure");
+>>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
     if ($conexion->connect_error) {
         die("Error de conexión:" . $conexion->connect_error);
     }
@@ -28,7 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $contrasenaEncriptada = hash('sha256', $contrasena);
+<<<<<<< HEAD
     $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
+=======
+    $conexion = new mysqli("localhost", "root", "", "Ashure");
+>>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
@@ -43,7 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     }
     $conexion->close();
 }
+<<<<<<< HEAD
 $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
+=======
+$conexion = new mysqli("localhost", "root", "", "Ashure");
+>>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
 if ($conexion->connect_error) {
     die("Error de conexión:" . $conexion->connect_error);
 }
