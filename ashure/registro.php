@@ -24,25 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     }
     $conexion->close();
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-    $correo = $_POST["correo"];
-    $contrasena = $_POST["contrasena"];
-    $contrasenaEncriptada = hash('sha256', $contrasena);
-    $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
-    $consulta = "SELECT id FROM usuario WHERE correo = '$correo' AND contraseña = '$contrasenaEncriptada'";
-    $resultado = $conexion->query($consulta);
-    if ($resultado->num_rows == 1) {
-        $_SESSION["loggedin"] = true;
-        header("Location: index.php");
-        exit();
-    } else {
-        $error = "Correo o contraseña incorrectos, vuelva a intentarlo.";
-    }
-    $conexion->close();
-}
 $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
 if ($conexion->connect_error) {
     die("Error de conexión:" . $conexion->connect_error);
@@ -50,15 +31,15 @@ if ($conexion->connect_error) {
 $consultaAlter = "ALTER TABLE usuario MODIFY COLUMN contraseña VARCHAR(64) NOT NULL";
 $conexion->query($consultaAlter);
 $conexion->close();
-?>
-
+    ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ashure - Inicia sesión</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
     <link rel="icon" href="ashure.ico">
     <style>
-        
         body {
             background-color: #f2f2f2;
             font-family: Arial, sans-serif;
@@ -140,24 +121,28 @@ $conexion->close();
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Iniciar sesión</h2>
-        <?php if (isset($error)) { ?>
-            <p class="error-message"><?php echo $error; ?></p>
+<div class="container register">
+        <h2>Registro</h2>
+        <h4>Es rápido y fácil.</h4>
+        <?php if (isset($errorRegistro)) { ?>
+            <p class="error-message"><?php echo $errorRegistro; ?></p>
         <?php } ?>
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-group">
-                <label for="correo">Correo electrónico:</label>
-                <input type="text" id="correo" name="correo" required>
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
             <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" required>
+                <label for="correoRegistro">Correo electrónico:</label>
+                <input type="text" id="correoRegistro" name="correoRegistro" required>
             </div>
             <div class="form-group">
-                <input type="submit" name="login" value="Iniciar sesión">
+                <label for="contrasenaRegistro">Contraseña:</label>
+                <input type="password" id="contrasenaRegistro" name="contrasenaRegistro" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="register" value="Registrarse">
                 <input type="reset" value="Limpiar" class="btn-reset">
-                <a href="registro.php">Solicitar cuenta</a>
             </div>
         </form>
     </div>
