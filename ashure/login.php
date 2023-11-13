@@ -4,21 +4,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $correoRegistro = $_POST["correoRegistro"];
     $contrasenaRegistro = $_POST["contrasenaRegistro"];
     $nombre = $_POST["nombre"];
-<<<<<<< HEAD
-    $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
-=======
     $conexion = new mysqli("localhost", "root", "", "Ashure");
->>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
     if ($conexion->connect_error) {
         die("Error de conexión:" . $conexion->connect_error);
     }
-    $consulta = "SELECT id FROM usuario WHERE correo = '$correoRegistro'";
+    $consulta = "SELECT id FROM usuarios WHERE correo = '$correoRegistro'";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows > 0) {
         $errorRegistro = "El correo ya está registrado";
     } else {
         $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
-        $consultaRegistro = "INSERT INTO usuario (nombre, correo, contraseña) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
+        $consultaRegistro = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
         if ($conexion->query($consultaRegistro) === TRUE) {
             header("Location: login.php");
             exit();
@@ -32,15 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $contrasenaEncriptada = hash('sha256', $contrasena);
-<<<<<<< HEAD
-    $conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
-=======
     $conexion = new mysqli("localhost", "root", "", "Ashure");
->>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
-    $consulta = "SELECT id FROM usuario WHERE correo = '$correo' AND contraseña = '$contrasenaEncriptada'";
+    $consulta = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasenaEncriptada'";
     $resultado = $conexion->query($consulta);
     if ($resultado->num_rows == 1) {
         $_SESSION["loggedin"] = true;
@@ -51,26 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     }
     $conexion->close();
 }
-<<<<<<< HEAD
-$conexion = new mysqli("localhost", "root", "123456789", "ashure_dr");
-=======
 $conexion = new mysqli("localhost", "root", "", "Ashure");
->>>>>>> 08fca3284e030f7b21eeec7e12829b48cea07569
 if ($conexion->connect_error) {
     die("Error de conexión:" . $conexion->connect_error);
 }
-$consultaAlter = "ALTER TABLE usuario MODIFY COLUMN contraseña VARCHAR(64) NOT NULL";
+$consultaAlter = "ALTER TABLE usuarios MODIFY COLUMN contrasena VARCHAR(64) NOT NULL";
 $conexion->query($consultaAlter);
 $conexion->close();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Ashure - Inicia sesión</title>
     <link rel="icon" href="ashure.ico">
     <style>
-        
         body {
             background-color: #f2f2f2;
             font-family: Arial, sans-serif;
@@ -169,7 +155,31 @@ $conexion->close();
             <div class="form-group">
                 <input type="submit" name="login" value="Iniciar sesión">
                 <input type="reset" value="Limpiar" class="btn-reset">
-                <a href="registro.php">Solicitar cuenta</a>
+            </div>
+        </form>
+    </div>
+    <div class="container register">
+        <h2>Registrarte</h2>
+        <h4>Es rápido y fácil.</h4>
+        <?php if (isset($errorRegistro)) { ?>
+            <p class="error-message"><?php echo $errorRegistro; ?></p>
+        <?php } ?>
+        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correoRegistro">Correo electrónico:</label>
+                <input type="text" id="correoRegistro" name="correoRegistro" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasenaRegistro">Contraseña:</label>
+                <input type="password" id="contrasenaRegistro" name="contrasenaRegistro" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="register" value="Registrarse">
+                <input type="reset" value="Limpiar" class="btn-reset">
             </div>
         </form>
     </div>
