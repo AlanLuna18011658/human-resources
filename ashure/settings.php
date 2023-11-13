@@ -88,19 +88,18 @@
                <input class="form-check-input" type="checkbox" id="darkModeSwitch">
                <label class="form-check-label" for="darkModeSwitch"></label>
             </div>
-            <h3>¿Olvidaste la contraseña?</h3>
-            <h5>Restablecela ahora.</h5>
+            <h3>Ajustes</h3>
             <form class="mt-4">
                <div class="mb-3">
-                  <label for="currentPassword" class="form-label">Contraseña actual:</label>
+                  <label for="currentPassword" class="form-label">#</label>
                   <input type="password" class="form-control" id="currentPassword">
                </div>
                <div class="mb-3">
-                  <label for="newPassword" class="form-label">Nueva contraseña:</label>
+                  <label for="newPassword" class="form-label">#</label>
                   <input type="password" class="form-control" id="newPassword">
                </div>
                <div class="mb-3">
-                  <label for="confirmPassword" class="form-label">Confirmar nueva contraseña:</label>
+                  <label for="confirmPassword" class="form-label">#</label>
                   <input type="password" class="form-control" id="confirmPassword">
                </div>
                <button type="submit" class="btn btn-primary">Guardar cambios</button>
