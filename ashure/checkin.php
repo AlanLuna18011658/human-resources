@@ -1,29 +1,36 @@
 <?php
    session_start();
-   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-       $correo = $_POST["correo"];
-       $contrasena = $_POST["contrasena"];
-       $contrasenaEncriptada = hash('sha256', $contrasena);
+   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
+       $correoRegistro = $_POST["correoRegistro"];
+       $contrasenaRegistro = $_POST["contrasenaRegistro"];
+       $nombre = $_POST["nombre"];
        $conexion = new mysqli("localhost", "root", "", "Ashure");
+   
        if ($conexion->connect_error) {
-           die("Error de conexión: " . $conexion->connect_error);
+           die("Error de conexión:" . $conexion->connect_error);
        }
-       $consulta = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasenaEncriptada'";
+       $consulta = "SELECT id FROM usuarios WHERE correo = '$correoRegistro'";
        $resultado = $conexion->query($consulta);
-       if ($resultado->num_rows == 1) {
-           $_SESSION["loggedin"] = true;
-           header("Location: index.php");
-           exit();
+       if ($resultado->num_rows > 0) {
+           $errorRegistro = "El correo ya está registrado";
        } else {
-           $error = "Correo o contraseña incorrectos, vuelva a intentarlo.";
+           $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
+           $consultaRegistro = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
+   
+           if ($conexion->query($consultaRegistro) === TRUE) {
+               header("Location: login.php");
+               exit();
+           } else {
+               $errorRegistro = "Error al registrar el correo";
+           }
        }
        $conexion->close();
    }
-?>
-<!doctype html>
+   ?>
+<!DOCTYPE html>
 <html>
    <head>
-      <title>Ashure - Iniciar sesión</title>
+      <title>Ashure - Registrarte</title>
       <link rel="icon" href="ashure.ico">
       <style>
          body {
@@ -95,25 +102,36 @@
       </style>
    </head>
    <body>
-      <div class="container">
-         <h2>Iniciar sesión</h2>
-         <?php if (isset($error)) { ?>
-         <p class="error-message"><?php echo $error; ?></p>
+      <div class="container register">
+         <h2>Registrarte</h2>
+         <h4>¿Eres administrativo?</h4>
+         <h4>Realiza los registros ahora.</h4>
+         <?php if (isset($errorRegistro)) { ?>
+         <p class="error-message"><?php echo $errorRegistro; ?></p>
          <?php } ?>
          <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-group">
-               <label for="correo">Correo electrónico:</label>
-               <input type="text" id="correo" name="correo" required>
+               <label for="nombre">Nombre completo:</label>
+               <input type="text" id="nombre" name="nombre" required>
             </div>
             <div class="form-group">
-               <label for="contrasena">Contraseña:</label>
-               <input type="password" id="contrasena" name="contrasena" required>
+               <label for="correoRegistro">Correo electrónico:</label>
+               <input type="text" id="correoRegistro" name="correoRegistro" required>
             </div>
             <div class="form-group">
-               <input type="submit" name="login" value="Iniciar sesión">
+               <label for="contrasenaRegistro">Contraseña:</label>
+               <input type="password" id="contrasenaRegistro" name="contrasenaRegistro" required>
+            </div>
+            <div class="form-group">
+               <input type="submit" name="register" value="Registrarse">
                <input type="reset" value="Limpiar" class="btn-reset">
             </div>
-            <center><p>&copy;Ashure2023 todos los derechos reservados.</p></center>
+            <center>
+               <div class="login-link">
+                  <p>¿Ya tienes un usuario? <a href="login.php">Inicia sesión.</a></p>
+               </div>
+               <p>&copy;Ashure2023 todos los derechos reservados.</p>
+            </center>
          </form>
       </div>
    </body>

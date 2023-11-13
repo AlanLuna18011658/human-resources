@@ -80,13 +80,13 @@
       <div id="carouselExample" class="carousel slide">
          <div class="carousel-inner">
             <div class="carousel-item active">
-               <img src="font.jpeg" class="d-block w-100" alt="font">
+               <img src="font-three.jpeg" class="d-block w-100" alt="font">
             </div>
             <div class="carousel-item">
                <img src="font-second.jpeg" class="d-block w-100" alt="font-second">
             </div>
             <div class="carousel-item">
-               <img src="font-three.jpeg" class="d-block w-100" alt="font-three">
+               <img src="font-first.jpeg" class="d-block w-100" alt="font-three">
             </div>
             <div class="carousel-item">
                <img src="ashure_web.jpg" class="d-block w-100" alt="ashure_web">
@@ -108,7 +108,7 @@
             </svg>
             </i> Ashure Web
          </a>
-         <p>&copy;Ashure todos los derechos reservados.</p>
+         <p>&copy;Ashure2023 todos los derechos reservados.</p>
       </footer>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
