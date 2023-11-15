@@ -1,24 +1,26 @@
 <?php
    session_start();
    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
-       $correoRegistro = $_POST["correoRegistro"];
-       $contrasenaRegistro = $_POST["contrasenaRegistro"];
-       $nombre = $_POST["nombre"];
-       $conexion = new mysqli("localhost", "root", "", "Ashure");
+       $nombre = $_POST['nombre'];
+       $a_paterno = $_POST['apaterno'];
+       $a_materno = $_POST['amaterno'];
+       $correoRegistro = $_POST['correoRegistro'];
+       $contrasenaRegistro = $_POST['contrasenaRegistro'];
+       $conexion = new mysqli("localhost", "root", "123456789", "ashuredb");
    
        if ($conexion->connect_error) {
            die("Error de conexión:" . $conexion->connect_error);
        }
-       $consulta = "SELECT id FROM usuarios WHERE correo = '$correoRegistro'";
+       $consulta = "SELECT idUsuario FROM usuario WHERE correo = '$correoRegistro'";
        $resultado = $conexion->query($consulta);
        if ($resultado->num_rows > 0) {
            $errorRegistro = "El correo ya está registrado";
        } else {
            $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
-           $consultaRegistro = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
+           $consultaRegistro = "INSERT INTO usuario (idUsuario,nombre, apellido_paterno, apellido_materno, correo, contraseña) VALUES ('0','$nombre','$a_paterno', '$a_materno', '$correoRegistro', '$contrasenaEncriptada')";
    
            if ($conexion->query($consultaRegistro) === TRUE) {
-               header("Location: http://localhost/human-resources/ashure/login.php");
+               header("Location: login.php");
                exit();
            } else {
                $errorRegistro = "Error al registrar el correo";
@@ -64,6 +66,7 @@
          color: #286090;
          }
          .form-group input[type="text"],
+         .form-group input[type="email"],
          .form-group input[type="password"] {
          width: 100%;
          padding: 7px;
@@ -111,12 +114,20 @@
          <?php } ?>
          <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-group">
-               <label for="nombre">Nombre completo:</label>
+               <label for="nombre">Nombre</label>
                <input type="text" id="nombre" name="nombre" required>
             </div>
             <div class="form-group">
+               <label for="apaterno">Apellido paterno</label>
+               <input type="text" id="apaterno" name="apaterno" required>
+            </div>
+            <div class="form-group">
+               <label for="amaterno">Apellido materno</label>
+               <input type="text" id="amaterno" name="amaterno" required>
+            </div>
+            <div class="form-group">
                <label for="correoRegistro">Correo electrónico:</label>
-               <input type="text" id="correoRegistro" name="correoRegistro" required>
+               <input type="email" id="correoRegistro" name="correoRegistro" required>
             </div>
             <div class="form-group">
                <label for="contrasenaRegistro">Contraseña:</label>
@@ -128,7 +139,7 @@
             </div>
             <center>
                <div class="login-link">
-                  <p>¿Ya tienes un usuario? <a href="http://localhost/human-resources/ashure/login.php">Inicia sesión.</a></p>
+                  <p>¿Ya tienes un usuario? <a href="login.php">Inicia sesión.</a></p>
                </div>
                <p>&copy;Ashure2023 todos los derechos reservados.</p>
             </center>
@@ -136,3 +147,4 @@
       </div>
    </body>
 </html>
+

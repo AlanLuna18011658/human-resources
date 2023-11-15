@@ -1,14 +1,15 @@
 <?php
+
    session_start();
    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-       $correo = $_POST["correo"];
-       $contrasena = $_POST["contrasena"];
+       $correo = $_POST['correo'];
+       $contrasena = $_POST['contrasena'];
        $contrasenaEncriptada = hash('sha256', $contrasena);
-       $conexion = new mysqli("localhost", "root", "", "Ashure");
+       $conexion = new mysqli("localhost", "root", "123456789", "ashuredb");
        if ($conexion->connect_error) {
            die("Error de conexión: " . $conexion->connect_error);
        }
-       $consulta = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasenaEncriptada'";
+       $consulta = "SELECT idUsuario FROM usuario WHERE correo = '$correo' AND contraseña = '$contrasenaEncriptada'";
        $resultado = $conexion->query($consulta);
        if ($resultado->num_rows == 1) {
            $_SESSION["loggedin"] = true;
@@ -19,6 +20,7 @@
        }
        $conexion->close();
    }
+
 ?>
 <!doctype html>
 <html>
