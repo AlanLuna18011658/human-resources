@@ -18,7 +18,7 @@
            $consultaRegistro = "INSERT INTO usuarios (nombre, correo, contrasena) VALUES ('$nombre', '$correoRegistro', '$contrasenaEncriptada')";
    
            if ($conexion->query($consultaRegistro) === TRUE) {
-               header("Location: login.php");
+               header("Location: http://localhost/human-resources/ashure/login.php");
                exit();
            } else {
                $errorRegistro = "Error al registrar el correo";
@@ -128,7 +128,7 @@
             </div>
             <center>
                <div class="login-link">
-                  <p>¿Ya tienes un usuario? <a href="login.php">Inicia sesión.</a></p>
+                  <p>¿Ya tienes un usuario? <a href="http://localhost/human-resources/ashure/login.php">Inicia sesión.</a></p>
                </div>
                <p>&copy;Ashure2023 todos los derechos reservados.</p>
             </center>
