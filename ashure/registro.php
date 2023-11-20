@@ -6,7 +6,7 @@
        $a_materno = $_POST['amaterno'];
        $correoRegistro = $_POST['correoRegistro'];
        $contrasenaRegistro = $_POST['contrasenaRegistro'];
-       $conexion = new mysqli("localhost", "root", "123456789", "ashuredb");
+       $conexion = new mysqli("localhost", "root", "", "ashuredb");
    
        if ($conexion->connect_error) {
            die("Error de conexión:" . $conexion->connect_error);
@@ -17,7 +17,7 @@
            $errorRegistro = "El correo ya está registrado";
        } else {
            $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
-           $consultaRegistro = "INSERT INTO usuario (idUsuario,nombre, apellido_paterno, apellido_materno, correo, contraseña) VALUES ('0','$nombre','$a_paterno', '$a_materno', '$correoRegistro', '$contrasenaEncriptada')";
+           $consultaRegistro = "INSERT INTO usuario (idUsuario, nombre, apellido_paterno, apellido_materno, correo, contraseña) VALUES ('0','$nombre','$a_paterno', '$a_materno', '$correoRegistro', '$contrasenaEncriptada')";
    
            if ($conexion->query($consultaRegistro) === TRUE) {
                header("Location: login.php");

@@ -1,6 +1,40 @@
 <?php
    require_once "validar_sesion.php";
 ?>
+<?php
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "ashuredb";
+   $conn = new mysqli($servername, $username, $password, $dbname);
+   if ($conn->connect_error) {
+       die("Conexión fallida:" . $conn->connect_error);
+   }
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       $nombre = $conn->real_escape_string($_POST["nombre"]);
+       $apellido_paterno = $conn->real_escape_string($_POST["apellido_paterno"]);
+       $apellido_materno = $conn->real_escape_string($_POST["apellido_materno"]);
+       $telefono = $conn->real_escape_string($_POST["telefono"]);
+       $genero = $conn->real_escape_string($_POST["genero"]);
+       $calle = $conn->real_escape_string($_POST["calle"]);
+       $ciudad = $conn->real_escape_string($_POST["ciudad"]);
+       $estado = $conn->real_escape_string($_POST["estado"]);
+       $cp = $conn->real_escape_string($_POST["cp"]);
+       $correo = $conn->real_escape_string($_POST["correo"]);
+       $fecha_contratacion = $conn->real_escape_string($_POST["fecha_contratacion"]);
+       $cargo = $conn->real_escape_string($_POST["cargo"]);
+       $salario = $conn->real_escape_string($_POST["salario"]);
+       $activo = $conn->real_escape_string($_POST["activo"]);
+       $sql = "INSERT INTO empleado (nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
+               VALUES ('$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
+       if ($conn->query($sql) === TRUE) {
+           echo "Registro insertado correctamente...";
+       } else {
+           echo "Error al insertar el registro." . $conn->error;
+       }
+   }
+   $conn->close();
+?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -9,116 +43,115 @@
       <title>Ashure - Registro Empleado</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <style>
+         @import url();
+         *{
+         font-family: 'Poppins', sans-serif;
+         margin:0;
+         padding:0;
+         }
+         body{
+         background: url(font-three.jpeg) no-repeat;
+         background-position: center;
+         background-size: cover;
+         }
+         section{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100% ;
+         min-height: 100vh;
+         }
+         .contenedor{
+         position: relative;
+         width: 700px;
+         border: 2px solid rgba(255,255,255, .6);
+         border-radius: 20px;
+         backdrop-filter: blur(15px);
+         height: 800px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .contenedor2{
+         position: relative;
+         width: 400px;
+         border-radius: 20px;
+         backdrop-filter: blur(15px);
+         height: 800px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .contenedor h2{
+         font-size: 2.3rem;
+         color: #fff;
+         text-align: right;
+         }
+         #h22{
+         font-size: 2.3rem;
+         color:;
+         text-align: left;
+         }
+         #uno{
+         position: relative;
+         top: 10px;
+         font-size: 2.3rem;
+         color: #FFF;
+         text-align: center;
+         }
+         .input-contenedor{
+         position: relative;
+         margin: 30px 0;
+         width: 300px;
+         border-bottom: 2px solid #fff ;
+         }
+         .input-contenedor label{
+         position: absolute;
+         top: 50%;
+         left:5px ;
+         transform: translateY(-50%);
+         color: #fff;
+         font-size: 1rem;
+         pointer-events: none;
+         transition: .6s;
+         font-family: bold;
+         }
+         input:focus ~ label,
+         input:focus ~ label{
+         top: -5px;
+         }
+         .input-contenedor input{
+         width: 100%;
+         height: 50px;
+         background-color: transparent;
+         border: none;
+         outline: none;
+         font-size: 1rem;
+         padding: - 35px 0 5px;
+         color: #fff;
+         }
+         .input-contenedor i{
+         position: absolute;
+         color: #fff;
+         font-size: 1.6rem;
+         top: 19px
+         right: 8px;
+         }
+         button{
+         width: 100%;
+         height: 45px;
+         border-radius: 40px;
+         background: #fff;
+         border: none;
+         font-weight: bold;
+         cursor: pointer;
+         outline: none;
+         font-size: 1rem;
+         transition: .4s; 
+         }
+      </style>
    </head>
-   <style>
-      /* css */
-      @import url();
-      *{
-      font-family: 'Poppins', sans-serif;
-      margin:0;
-      padding:0;
-      }
-      body{
-      background: url(fondo1.jpg) no-repeat;
-      background-position: center;
-      background-size: cover;
-      }
-      section{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100% ;
-      min-height: 100vh;
-      }
-      .contenedor{
-      position: relative;
-      width: 700px;
-      border: 2px solid rgba(255,255,255, .6);
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      height: 800px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .contenedor2{
-      position: relative;
-      width: 400px;
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      height: 800px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .contenedor h2{
-      font-size: 2.3rem;
-      color: #fff;
-      text-align: right;
-      }
-      #h22{
-      font-size: 2.3rem;
-      color:;
-      text-align: left;
-      }
-      #uno{
-      position: relative;
-      top: 10px;
-      font-size: 2.3rem;
-      color: #FFF;
-      text-align: center;
-      }
-      .input-contenedor{
-      position: relative;
-      margin: 30px 0;
-      width: 300px;
-      border-bottom: 2px solid #fff ;
-      }
-      .input-contenedor label{
-      position: absolute;
-      top: 50%;
-      left:5px ;
-      transform: translateY(-50%);
-      color: #fff;
-      font-size: 1rem;
-      pointer-events: none;
-      transition: .6s;
-      font-family: bold;
-      }
-      input:focus ~ label,
-      input:focus ~ label{
-      top: -5px;
-      }
-      .input-contenedor input{
-      width: 100%;
-      height: 50px;
-      background-color: transparent;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      padding: - 35px 0 5px;
-      color: #fff;
-      }
-      .input-contenedor i{
-      position: absolute;
-      color: #fff;
-      font-size: 1.6rem;
-      top: 19px
-      right: 8px;
-      }
-      button{
-      width: 100%;
-      height: 45px;
-      border-radius: 40px;
-      background: #fff;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      outline: none;
-      font-size: 1rem;
-      transition: .4s; 
-      }
-   </style>
    <body>
    <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
@@ -181,74 +214,72 @@
             </div>
          </div>
       </nav>
-      <form action="#">
+      <form method="POST" action="">
          <h1 id="uno"> Registro empleado</h1>
          <section>
             <div class="contenedor">
                <div class="formulario">
-                  <!-- <h2>Registro</h2>-->
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Nombre/s</label>
+                     <input type="text" name="nombre" required>
+                     <label for="nombre"> Nombre/s</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Apellido paterno</label>
+                     <input type="text" name="apellido_paterno" required>
+                     <label for="apellido_paterno"> Apellido paterno</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Apellido materno</label>
+                     <input type="text" name="apellido_materno" required>
+                     <label for="apellido_materno"> Apellido materno</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Teléfono</label>
+                     <input type="text" name="telefono" required>
+                     <label for="telefono"> Teléfono</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Genero</label>
+                     <input type="text" name="genero" required>
+                     <label for="genero"> Genero</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Calle</label>
+                     <input type="text" name="calle" required>
+                     <label for="calle"> Calle</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" required>
-                     <label for="#"> Ciudad</label>
+                     <input type="text" name="ciudad" required>
+                     <label for="ciudad"> Ciudad</label>
                   </div>
                </div>
                <div class="contenedor2">
                   <div class="formulario">
-                     <!-- <h2 id="h22">Empleado</h2>-->
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> Estado</label>
+                        <input type="text" name="estado" required>
+                        <label for="estado"> Estado</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> CP</label>
+                        <input type="text" name="cp" required>
+                        <label for="cp"> CP</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="email" required>
-                        <label for="#"> Correo</label>
+                        <input type="email" name="correo" required>
+                        <label for="correo"> Correo</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> Fecha de contratación</label>
+                        <input type="text" name="fecha_contratacion" required>
+                        <label for="fecha_contratacion"> Fecha de contratación</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> Cargo</label>
+                        <input type="text" name="cargo" required>
+                        <label for="cargo"> Cargo</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> Salario</label>
+                        <input type="text" name="salario" required>
+                        <label for="salario"> Salario</label>
                      </div>
                      <div class="input-contenedor">
-                        <input type="text" required>
-                        <label for="#"> Activo</label>
+                        <input type="text" name="activo" required>
+                        <label for="activo"> Activo</label>
                      </div>
                      <div>
-                        <button>Enviar</button>
+                        <button type="submit">Enviar</button>
                      </div>
                   </div>
                </div>
