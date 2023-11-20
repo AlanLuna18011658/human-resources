@@ -28,9 +28,9 @@
        $sql = "INSERT INTO empleado (nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
                VALUES ('$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
        if ($conn->query($sql) === TRUE) {
-           echo "Registro insertado correctamente...";
+           echo "Ashure - ¡Registro insertado correctamente!";
        } else {
-           echo "Error al insertar el registro." . $conn->error;
+           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
    }
    $conn->close();
@@ -153,7 +153,7 @@
       </style>
    </head>
    <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
             <img src="ashure.webp" alt="logo" width="200px" height="150px"></a>
