@@ -6,7 +6,7 @@
        $a_materno = $_POST['amaterno'];
        $correoRegistro = $_POST['correoRegistro'];
        $contrasenaRegistro = $_POST['contrasenaRegistro'];
-       $conexion = new mysqli("localhost", "root", "123456789", "ashuredb");
+       $conexion = new mysqli("localhost", "root", "", "ashuredb");
    
        if ($conexion->connect_error) {
            die("Error de conexión:" . $conexion->connect_error);

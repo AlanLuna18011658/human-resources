@@ -38,7 +38,7 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
