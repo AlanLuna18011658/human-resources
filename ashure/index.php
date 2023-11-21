@@ -24,9 +24,6 @@
                   <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Perfil</a>
-                  </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                      Empleados
@@ -37,8 +34,8 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>

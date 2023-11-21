@@ -11,39 +11,16 @@
        die("Conexión fallida:" . $conn->connect_error);
    }
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      #tabla usuario
-       $nombre = $conn->real_escape_string($_POST["nombre"]);
-       $apellido_paterno = $conn->real_escape_string($_POST["apellido_paterno"]);
-       $apellido_materno = $conn->real_escape_string($_POST["apellido_materno"]);
-       $telefono = $conn->real_escape_string($_POST["telefono"]);
-       $genero = $conn->real_escape_string($_POST["genero"]);
-       $calle = $conn->real_escape_string($_POST["calle"]);
-       $ciudad = $conn->real_escape_string($_POST["ciudad"]);
-       $estado = $conn->real_escape_string($_POST["estado"]);
-       $cp = $conn->real_escape_string($_POST["cp"]);
-       $correo = $conn->real_escape_string($_POST["correo"]);
-       $fecha_contratacion = $conn->real_escape_string($_POST["fecha_contratacion"]);
-       $cargo = $conn->real_escape_string($_POST["cargo"]);
-       $salario = $conn->real_escape_string($_POST["salario"]);
-       $activo = $conn->real_escape_string($_POST["activo"]);
-<<<<<<< HEAD
-       $sql = "INSERT INTO empleado (idempleado,nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
-               VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
-
-       if ($conn->query($sql) === TRUE) {
-           echo "Ashure - ¡Registro insertado correctamente!";
-       } else {
-           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
-       }
-=======
-       $sql = "INSERT INTO empleado (idempleado, nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
-               VALUES ('0', '$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
+       $tipo = $conn->real_escape_string($_POST["tipo"]);
+       $motivo = $conn->real_escape_string($_POST["motivo"]);
+       $fecha = $conn->real_escape_string($_POST["fecha"]);
+       $sql = "INSERT INTO rotacion_personal (idRotacion_personal, tipo, motivo, fecha) 
+               VALUES ('0', '$tipo', '$motivo', '$fecha')";
       if ($conn->query($sql) === TRUE) {
          echo "Ashure - ¡Registro insertado correctamente!";
      } else {
          echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
      }
->>>>>>> 21476ec293f00b41142a16560afbec511e040808
    }
    $conn->close();
 ?>
@@ -52,7 +29,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ashure - Registro Empleado</title>
+      <title>Ashure - Rotación de personal</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -81,14 +58,14 @@
       border: 2px solid rgba(255,255,255, .6);
       border-radius: 20px;
       backdrop-filter: blur(15px);
-      height: 680px;
+      height: 800px;
       display: flex;
       justify-content: center;
       align-items: center;
       }
       .contenedor2{
       position: relative;
-      width: 700px;
+      width: 400px;
       border-radius: 20px;
       backdrop-filter: blur(15px);
       height: 800px;
@@ -225,78 +202,29 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Datos de salud</h1>
+         <h1 id="uno"> Rotacion de personal</h1>
          <section>
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                     <input type="text" name="nombre" required>
-                     <label for="nombre"> Nombre/s</label>
+                     <input type="text" name="tipo" required>
+                     <label for="tipo"> Tipo</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="apellido_paterno" required>
-                     <label for="apellido_paterno"> Apellido paterno</label>
+                     <input type="text" name="motivo" required>
+                     <label for="motivo"> Motivo</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="apellido_materno" required>
-                     <label for="apellido_materno"> Apellido materno</label>
+                     <input type="text" name="fecha" required>
+                     <label for="fecha"> Fecha</label>
                   </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="telefono" required>
-                     <label for="telefono"> Teléfono</label>
-                  </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="genero" required>
-                     <label for="genero"> Genero</label>
-                  </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="calle" required>
-                     <label for="calle"> Calle</label>
-                  </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="ciudad" required>
-                     <label for="ciudad"> Ciudad</label>
-                  </div>
-               </div>
-               <div class="contenedor2">
-                  <div class="formulario">
-                     <div class="input-contenedor">
-                        <input type="text" name="estado" required>
-                        <label for="estado"> Estado</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="cp" required>
-                        <label for="cp"> CP</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="email" name="correo" required>
-                        <label for="correo"> Correo</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="fecha_contratacion" required>
-                        <label for="fecha_contratacion"> Fecha de contratación</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="cargo" required>
-                        <label for="cargo"> Cargo</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="salario" required>
-                        <label for="salario"> Salario</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="activo" required>
-                        <label for="activo"> Activo</label>
-                     </div>
                      <div>
                         <button type="submit">Enviar</button>
                      </div>
+                     </div>
                   </div>
-                  <!-- fin formulario 2-->
                </div>
-                <!-- fin contenedor-->
             </div>
-
          </section>
       </form>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

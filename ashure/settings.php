@@ -1,6 +1,6 @@
 <?php
    require_once "validar_sesion.php";
-?>
+   ?>
 <!doctype html>
 <html lang="es">
    <head>
@@ -33,9 +33,6 @@
                   <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Perfil</a>
-                  </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                      Empleados
@@ -46,8 +43,8 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
@@ -83,28 +80,21 @@
          </div>
       </nav>
       <div class="container mt-5">
-         <center>
-            <div class="form-check form-switch mt-3">
-               <input class="form-check-input" type="checkbox" id="darkModeSwitch">
-               <label class="form-check-label" for="darkModeSwitch"></label>
-            </div>
-            <h3>Ajustes</h3>
-            <form class="mt-4">
-               <div class="mb-3">
-                  <label for="currentPassword" class="form-label">#</label>
-                  <input type="password" class="form-control" id="currentPassword">
-               </div>
-               <div class="mb-3">
-                  <label for="newPassword" class="form-label">#</label>
-                  <input type="password" class="form-control" id="newPassword">
-               </div>
-               <div class="mb-3">
-                  <label for="confirmPassword" class="form-label">#</label>
-                  <input type="password" class="form-control" id="confirmPassword">
-               </div>
-               <button type="submit" class="btn btn-primary">Guardar cambios</button>
-            </form>
-         </center>
+      <center>
+         <div class="form-check form-switch mt-3">
+            <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+            <label class="form-check-label" for="darkModeSwitch"></label>
+         </div>
+         <h3>Ajustes</h3>
+         <form class="mt-4">
+            <div class="mb-3">
+               <label for="currentPassword" class="form-label">
+               ¿Necesitas cambiar la contraseña? Envíanos un correo ahora:
+               <a href="pdf/Ashure - Contacto.pdf" class="btn btn-link">Correos de contacto</a>
+               </label>
+         </form>
+         <p>&copy;Ashure2023 todos los derechos reservados.</p>   
+      </center>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
