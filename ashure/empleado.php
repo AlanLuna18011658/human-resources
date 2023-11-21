@@ -1,6 +1,6 @@
 <?php
    require_once "validar_sesion.php";
-?>
+   ?>
 <?php
    $servername = "localhost";
    $username = "root";
@@ -26,20 +26,18 @@
        $cargo = $conn->real_escape_string($_POST["cargo"]);
        $salario = $conn->real_escape_string($_POST["salario"]);
        $activo = $conn->real_escape_string($_POST["activo"]);
-       
+
        $sql = "INSERT INTO empleado (idempleado,nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
                VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
-
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
 
-
    }
    $conn->close();
-?>
+   ?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -49,113 +47,113 @@
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
-        /* css */
-      @import url();
-      *{
-      font-family: 'Poppins', sans-serif;
-      margin:0;
-      padding:0;
-      }
-      body{
-      background: url(font-three.jpeg) no-repeat;
-      background-position: center;
-      background-size: cover;
-      }
-      section{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100% ;
-      min-height: 100vh;
-      }
-      .contenedor{
-      position: relative;
-      width: 700px;
-      border: 2px solid rgba(255,255,255, .6);
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      height: 680px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .contenedor2{
-      position: relative;
-      width: 700px;
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      height: 800px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .contenedor h2{
-      font-size: 2.3rem;
-      color: #fff;
-      text-align: right;
-      }
-      #h22{
-      font-size: 2.3rem;
-      color:;
-      text-align: left;
-      }
-      #uno{
-      position: relative;
-      top: 10px;
-      font-size: 2.3rem;
-      color: #FFF;
-      text-align: center;
-      }
-      .input-contenedor{
-      position: relative;
-      margin: 30px 0;
-      width: 300px;
-      border-bottom: 2px solid #fff ;
-      }
-      .input-contenedor label{
-      position: absolute;
-      top: 50%;
-      left: 5px ;
-      transform: translateY(-50%);
-      color: #fff;
-      font-size: 1rem;
-      pointer-events: none;
-      transition: .6s;
-      font-weight: bold;
-      }
-      input:focus ~ label,
-      input:valid ~ label{
+         /* css */
+         @import url();
+         *{
+         font-family: 'Poppins', sans-serif;
+         margin:0;
+         padding:0;
+         }
+         body{
+         background: url(font-three.jpeg) no-repeat;
+         background-position: center;
+         background-size: cover;
+         }
+         section{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100% ;
+         min-height: 100vh;
+         }
+         .contenedor{
+         position: relative;
+         width: 700px;
+         border: 2px solid rgba(255,255,255, .6);
+         border-radius: 20px;
+         backdrop-filter: blur(15px);
+         height: 680px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .contenedor2{
+         position: relative;
+         width: 700px;
+         border-radius: 20px;
+         backdrop-filter: blur(15px);
+         height: 800px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .contenedor h2{
+         font-size: 2.3rem;
+         color: #fff;
+         text-align: right;
+         }
+         #h22{
+         font-size: 2.3rem;
+         color:;
+         text-align: left;
+         }
+         #uno{
+         position: relative;
+         top: 10px;
+         font-size: 2.3rem;
+         color: #FFF;
+         text-align: center;
+         }
+         .input-contenedor{
+         position: relative;
+         margin: 30px 0;
+         width: 300px;
+         border-bottom: 2px solid #fff ;
+         }
+         .input-contenedor label{
+         position: absolute;
+         top: 50%;
+         left: 5px ;
+         transform: translateY(-50%);
+         color: #fff;
+         font-size: 1rem;
+         pointer-events: none;
+         transition: .6s;
+         font-weight: bold;
+         }
+         input:focus ~ label,
+         input:valid ~ label{
          top: -5px;
-      }
-      .input-contenedor input{
-      width: 100%;
-      height: 50px;
-      background-color: transparent;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      padding: - 35px 0 5px;
-      color: #fff;
-      }
-      .input-contenedor i{
-      position: absolute;
-      color: #fff;
-      font-size: 1.6rem;
-      top: 19px
-      right: 8px;
-      }
-      button{
-      width: 100%;
-      height: 45px;
-      border-radius: 40px;
-      background: #fff;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      outline: none;
-      font-size: 1rem;
-      transition: .4s; 
-      }
+         }
+         .input-contenedor input{
+         width: 100%;
+         height: 50px;
+         background-color: transparent;
+         border: none;
+         outline: none;
+         font-size: 1rem;
+         padding: - 35px 0 5px;
+         color: #fff;
+         }
+         .input-contenedor i{
+         position: absolute;
+         color: #fff;
+         font-size: 1.6rem;
+         top: 19px
+         right: 8px;
+         }
+         button{
+         width: 100%;
+         height: 45px;
+         border-radius: 40px;
+         background: #fff;
+         border: none;
+         font-weight: bold;
+         cursor: pointer;
+         outline: none;
+         font-size: 1rem;
+         transition: .4s; 
+         }
       </style>
    </head>
    <body>
@@ -285,11 +283,8 @@
                         <button type="submit">Enviar</button>
                      </div>
                   </div>
-                  <!-- fin formulario 2-->
                </div>
-                <!-- fin contenedor-->
             </div>
-
          </section>
       </form>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

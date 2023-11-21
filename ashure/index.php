@@ -33,7 +33,7 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="salud.php">Salud</a></li>
                         <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
                         <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>

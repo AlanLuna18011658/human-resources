@@ -1,5 +1,5 @@
 <?php
-   //require_once "validar_sesion.php";
+   require_once "validar_sesion.php";
 ?>
 <?php
    $servername = "localhost";
@@ -22,7 +22,6 @@
        $ult_rev_med = $conn->real_escape_string($_POST["ult_rev_med"]);
        $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision(fecha), empleado_idempleado) 
                VALUES ('0','$tipo_sangre', ' $Alergias', '$enf_cron', '$h_med', '$med_cabecera', '$tel_med', '$ult_rev_med', '$id_foranea ')";
-
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
@@ -150,10 +149,11 @@
       </style>
    </head>
    <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-            <img src="ashure.webp" alt="logo" width="200px" height="150px"></a>
+            <img src="ashure.webp" alt="logo" width="200px" height="150px">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -161,9 +161,6 @@
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Perfil</a>
                   </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
@@ -174,9 +171,9 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="salud.php">Salud</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
@@ -208,6 +205,10 @@
                      <a class="nav-link" href="<?php echo htmlspecialchars('destroy.php', ENT_QUOTES, 'UTF-8'); ?>" aria-disabled="true">Cerrar sesión</a>
                   </li>
                </ul>
+               <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Busqueda</button>
+               </form>
             </div>
          </div>
       </nav>
@@ -254,10 +255,7 @@
                         <button type="submit">Enviar</button>
                      </div>
                </div>
-    
-                <!-- fin contenedor-->
             </div>
-
          </section>
       </form>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
