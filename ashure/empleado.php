@@ -166,9 +166,6 @@
                   <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Perfil</a>
-                  </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                      Empleados
@@ -179,8 +176,8 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
@@ -265,7 +262,7 @@
                      </div>
                      <div class="input-contenedor">
                         <input type="text" name="fecha_contratacion" required>
-                        <label for="fecha_contratacion"> Fecha de contratación: Año-Mes-Día</label>
+                        <label for="fecha_contratacion"> Fecha de contratación</label>
                      </div>
                      <div class="input-contenedor">
                         <input type="text" name="cargo" required>

@@ -11,16 +11,16 @@
        die("Conexión fallida:" . $conn->connect_error);
    }
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-       $nombre = $conn->real_escape_string($_POST["tipo"]);
-       $apellido_paterno = $conn->real_escape_string($_POST["motivo"]);
-       $apellido_materno = $conn->real_escape_string($_POST["fecha"]);
+       $tipo = $conn->real_escape_string($_POST["tipo"]);
+       $motivo = $conn->real_escape_string($_POST["motivo"]);
+       $fecha = $conn->real_escape_string($_POST["fecha"]);
        $sql = "INSERT INTO rotacion_personal (idRotacion_personal, tipo, motivo, fecha) 
-               VALUES ('0', '$tipo', '$motivo', '$fecha'";
-       if ($conn->query($sql) === TRUE) {
-           echo "Ashure - ¡Registro insertado correctamente!";
-       } else {
-           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
-       }
+               VALUES ('0', '$tipo', '$motivo', '$fecha')";
+      if ($conn->query($sql) === TRUE) {
+         echo "Ashure - ¡Registro insertado correctamente!";
+     } else {
+         echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
+     }
    }
    $conn->close();
 ?>
@@ -29,7 +29,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ashure - Rotacion de Personal</title>
+      <title>Ashure - Registro Empleado</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -155,9 +155,6 @@
                   <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Perfil</a>
-                  </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                      Empleados
@@ -168,8 +165,8 @@
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
@@ -205,13 +202,13 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Rotación de personal</h1>
+         <h1 id="uno"> Rotacion de personal</h1>
          <section>
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
                      <input type="text" name="tipo" required>
-                     <label for="tipo"> Tipo/s</label>
+                     <label for="tipo"> Tipo</label>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="motivo" required>
@@ -221,10 +218,10 @@
                      <input type="text" name="fecha" required>
                      <label for="fecha"> Fecha</label>
                   </div>
-                  <div>
+                     <div>
                         <button type="submit">Enviar</button>
                      </div>
-                   </div>
+                     </div>
                   </div>
                </div>
             </div>
