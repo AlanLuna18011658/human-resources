@@ -1,10 +1,10 @@
 <?php
-   require_once "validar_sesion.php";
+   //require_once "validar_sesion.php";
 ?>
 <?php
    $servername = "localhost";
    $username = "root";
-   $password = "";
+   $password = "123456789";
    $dbname = "ashuredb";
    $conn = new mysqli($servername, $username, $password, $dbname);
    if ($conn->connect_error) {
@@ -44,112 +44,113 @@
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
-         @import url();
-         *{
-         font-family: 'Poppins', sans-serif;
-         margin:0;
-         padding:0;
-         }
-         body{
-         background: url(font-three.jpeg) no-repeat;
-         background-position: center;
-         background-size: cover;
-         }
-         section{
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         width: 100% ;
-         min-height: 100vh;
-         }
-         .contenedor{
-         position: relative;
-         width: 700px;
-         border: 2px solid rgba(255,255,255, .6);
-         border-radius: 20px;
-         backdrop-filter: blur(15px);
-         height: 800px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         }
-         .contenedor2{
-         position: relative;
-         width: 400px;
-         border-radius: 20px;
-         backdrop-filter: blur(15px);
-         height: 800px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         }
-         .contenedor h2{
-         font-size: 2.3rem;
-         color: #fff;
-         text-align: right;
-         }
-         #h22{
-         font-size: 2.3rem;
-         color:;
-         text-align: left;
-         }
-         #uno{
-         position: relative;
-         top: 10px;
-         font-size: 2.3rem;
-         color: #FFF;
-         text-align: center;
-         }
-         .input-contenedor{
-         position: relative;
-         margin: 30px 0;
-         width: 300px;
-         border-bottom: 2px solid #fff ;
-         }
-         .input-contenedor label{
-         position: absolute;
-         top: 50%;
-         left:5px ;
-         transform: translateY(-50%);
-         color: #fff;
-         font-size: 1rem;
-         pointer-events: none;
-         transition: .6s;
-         font-family: bold;
-         }
-         input:focus ~ label,
-         input:focus ~ label{
+        /* css */
+      @import url();
+      *{
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      padding:0;
+      }
+      body{
+      background: url(font-three.jpeg) no-repeat;
+      background-position: center;
+      background-size: cover;
+      }
+      section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100% ;
+      min-height: 100vh;
+      }
+      .contenedor{
+      position: relative;
+      width: 700px;
+      border: 2px solid rgba(255,255,255, .6);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .contenedor2{
+      position: relative;
+      width: 400px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .contenedor h2{
+      font-size: 2.3rem;
+      color: #fff;
+      text-align: right;
+      }
+      #h22{
+      font-size: 2.3rem;
+      color:;
+      text-align: left;
+      }
+      #uno{
+      position: relative;
+      top: 10px;
+      font-size: 2.3rem;
+      color: #FFF;
+      text-align: center;
+      }
+      .input-contenedor{
+      position: relative;
+      margin: 30px 0;
+      width: 300px;
+      border-bottom: 2px solid #fff ;
+      }
+      .input-contenedor label{
+      position: absolute;
+      top: 50%;
+      left: 5px ;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: .6s;
+      font-weight: bold;
+      }
+      input:focus ~ label,
+      input:valid ~ label{
          top: -5px;
-         }
-         .input-contenedor input{
-         width: 100%;
-         height: 50px;
-         background-color: transparent;
-         border: none;
-         outline: none;
-         font-size: 1rem;
-         padding: - 35px 0 5px;
-         color: #fff;
-         }
-         .input-contenedor i{
-         position: absolute;
-         color: #fff;
-         font-size: 1.6rem;
-         top: 19px
-         right: 8px;
-         }
-         button{
-         width: 100%;
-         height: 45px;
-         border-radius: 40px;
-         background: #fff;
-         border: none;
-         font-weight: bold;
-         cursor: pointer;
-         outline: none;
-         font-size: 1rem;
-         transition: .4s; 
-         }
+      }
+      .input-contenedor input{
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: - 35px 0 5px;
+      color: #fff;
+      }
+      .input-contenedor i{
+      position: absolute;
+      color: #fff;
+      font-size: 1.6rem;
+      top: 19px
+      right: 8px;
+      }
+      button{
+      width: 100%;
+      height: 45px;
+      border-radius: 40px;
+      background: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      font-size: 1rem;
+      transition: .4s; 
+      }
       </style>
    </head>
    <body>
