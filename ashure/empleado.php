@@ -4,7 +4,7 @@
 <?php
    $servername = "localhost";
    $username = "root";
-   $password = "";
+   $password = "123456789";
    $dbname = "ashuredb";
    $conn = new mysqli($servername, $username, $password, $dbname);
    if ($conn->connect_error) {
@@ -26,7 +26,7 @@
        $cargo = $conn->real_escape_string($_POST["cargo"]);
        $salario = $conn->real_escape_string($_POST["salario"]);
        $activo = $conn->real_escape_string($_POST["activo"]);
-<<<<<<< HEAD
+       
        $sql = "INSERT INTO empleado (idempleado,nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
                VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
 
@@ -35,15 +35,8 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-=======
-       $sql = "INSERT INTO empleado (idempleado, nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
-               VALUES ('0', '$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
-      if ($conn->query($sql) === TRUE) {
-         echo "Ashure - ¡Registro insertado correctamente!";
-     } else {
-         echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
-     }
->>>>>>> 21476ec293f00b41142a16560afbec511e040808
+
+
    }
    $conn->close();
 ?>
