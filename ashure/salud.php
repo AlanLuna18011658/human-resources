@@ -1,5 +1,5 @@
 <?php
-   require_once "validar_sesion.php";
+   //require_once "validar_sesion.php";
 ?>
 <?php
    $servername = "localhost";
@@ -12,22 +12,16 @@
    }
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       #tabla usuario
-       $nombre = $conn->real_escape_string($_POST["nombre"]);
-       $apellido_paterno = $conn->real_escape_string($_POST["apellido_paterno"]);
-       $apellido_materno = $conn->real_escape_string($_POST["apellido_materno"]);
-       $telefono = $conn->real_escape_string($_POST["telefono"]);
-       $genero = $conn->real_escape_string($_POST["genero"]);
-       $calle = $conn->real_escape_string($_POST["calle"]);
-       $ciudad = $conn->real_escape_string($_POST["ciudad"]);
-       $estado = $conn->real_escape_string($_POST["estado"]);
-       $cp = $conn->real_escape_string($_POST["cp"]);
-       $correo = $conn->real_escape_string($_POST["correo"]);
-       $fecha_contratacion = $conn->real_escape_string($_POST["fecha_contratacion"]);
-       $cargo = $conn->real_escape_string($_POST["cargo"]);
-       $salario = $conn->real_escape_string($_POST["salario"]);
-       $activo = $conn->real_escape_string($_POST["activo"]);
-       $sql = "INSERT INTO empleado (idempleado,nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
-               VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       $tipo_sangre = $conn->real_escape_string($_POST["tipo_sangre"]);
+       $Alergias = $conn->real_escape_string($_POST["Alergias"]);
+       $enf_cron = $conn->real_escape_string($_POST["enf_cron"]);
+       $h_med = $conn->real_escape_string($_POST["h_med"]);
+       $med_cabecera = $conn->real_escape_string($_POST["med_cabecera"]);
+       $tel_med = $conn->real_escape_string($_POST["tel_med"]);
+       $ult_rev_med = $conn->real_escape_string($_POST["ult_rev_med"]);
+       $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision(fecha), empleado_idempleado) 
+               VALUES ('0','$tipo_sangre', ' $Alergias', '$enf_cron', '$h_med', '$med_cabecera', '$tel_med', '$ult_rev_med', '$id_foranea ')";
 
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
@@ -67,18 +61,18 @@
       }
       .contenedor{
       position: relative;
-      width: 700px;
+      width: 500px;
       border: 2px solid rgba(255,255,255, .6);
       border-radius: 20px;
       backdrop-filter: blur(15px);
-      height: 680px;
+      height: 750px;
       display: flex;
       justify-content: center;
       align-items: center;
       }
       .contenedor2{
       position: relative;
-      width: 700px;
+      width: 400px;
       border-radius: 20px;
       backdrop-filter: blur(15px);
       height: 800px;
@@ -223,70 +217,52 @@
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                     <input type="text" name="nombre" required>
-                     <label for="nombre"> Nombre/s</label>
+                  <select type="text" name="nombre" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
+                        
+                        <?php
+                            $sql=$conex->query ("SELECT * FROM empleado");
+                            while($sql= $fuera->fech_array()){
+                                echo "<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+
+                            }
+                            
+                            ?>
+                  </select>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="apellido_paterno" required>
-                     <label for="apellido_paterno"> Apellido paterno</label>
+                     <input type="text" name="tipo_sangre" required>
+                     <label for="tipo_sangre"> Tipo de sangre</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="apellido_materno" required>
-                     <label for="apellido_materno"> Apellido materno</label>
+                     <input type="text" name="Alergias" required>
+                     <label for="Alergias">Alergias</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="telefono" required>
-                     <label for="telefono"> Teléfono</label>
+                     <input type="text" name="enf_cron" required>
+                     <label for="enf_cron"> Enfermedades crónicas</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="genero" required>
-                     <label for="genero"> Genero</label>
+                     <input type="text" name="h_med" required>
+                     <label for="h_med"> Historial médivo</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="calle" required>
-                     <label for="calle"> Calle</label>
+                     <input type="text" name="med_cabecera" required>
+                     <label for="med_cabecera"> Médico de cabecera </label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="ciudad" required>
-                     <label for="ciudad"> Ciudad</label>
+                     <input type="text" name="tel_med" required>
+                     <label for="tel_med"> Teléfon del médico</label>
                   </div>
-               </div>
-               <div class="contenedor2">
-                  <div class="formulario">
-                     <div class="input-contenedor">
-                        <input type="text" name="estado" required>
-                        <label for="estado"> Estado</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="cp" required>
-                        <label for="cp"> CP</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="email" name="correo" required>
-                        <label for="correo"> Correo</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="fecha_contratacion" required>
-                        <label for="fecha_contratacion"> Fecha de contratación</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="cargo" required>
-                        <label for="cargo"> Cargo</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="salario" required>
-                        <label for="salario"> Salario</label>
-                     </div>
-                     <div class="input-contenedor">
-                        <input type="text" name="activo" required>
-                        <label for="activo"> Activo</label>
-                     </div>
-                     <div>
+                  <div class="input-contenedor">
+                     <input type="text" name="ult_rev_med" required>
+                     <label for="ult_rev_med">Última revisión médica(fecha)</label>
+                  </div>
+                  <div>
                         <button type="submit">Enviar</button>
                      </div>
-                  </div>
-                  <!-- fin formulario 2-->
                </div>
+    
                 <!-- fin contenedor-->
             </div>
 
