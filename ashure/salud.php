@@ -220,14 +220,6 @@
                   <select type="text" name="nombre" required>
                         <option value="id_foranea" id="empleado">Elige un empleado...</option>
                         
-                        <?php
-                            $sql=$conex->query ("SELECT * FROM empleado");
-                            while($sql= $fuera->fech_array()){
-                                echo "<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
-
-                            }
-                            
-                            ?>
                   </select>
                   </div>
                   <div class="input-contenedor">
