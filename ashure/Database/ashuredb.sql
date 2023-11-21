@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`empleado_has_usuario` (
   `empleado_idempleado` INT NOT NULL,
   `Usuario_idUsuario` INT NOT NULL,
   PRIMARY KEY (`empleado_idempleado`, `Usuario_idUsuario`),
-  INDEX `fk_empleado_has_Usuario_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
-  INDEX `fk_empleado_has_Usuario_empleado_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_empleado_has_Usuario_Usuario1_idx` (`Usuario_idUsuario` ASC),
+  INDEX `fk_empleado_has_Usuario_empleado_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_empleado_has_Usuario_empleado`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`salud` (
   `ultima_revision(fecha)` DATE NOT NULL,
   `empleado_idempleado` INT NOT NULL,
   PRIMARY KEY (`idsalud`, `empleado_idempleado`),
-  INDEX `fk_salud_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_salud_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_salud_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`nomina_has_empleado` (
   `nomina_idnomina` INT NOT NULL,
   `empleado_idempleado` INT NOT NULL,
   PRIMARY KEY (`nomina_idnomina`, `empleado_idempleado`),
-  INDEX `fk_nomina_has_empleado_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
-  INDEX `fk_nomina_has_empleado_nomina1_idx` (`nomina_idnomina` ASC) VISIBLE,
+  INDEX `fk_nomina_has_empleado_empleado1_idx` (`empleado_idempleado` ASC),
+  INDEX `fk_nomina_has_empleado_nomina1_idx` (`nomina_idnomina` ASC),
   CONSTRAINT `fk_nomina_has_empleado_nomina1`
     FOREIGN KEY (`nomina_idnomina`)
     REFERENCES `ashuredb`.`nomina` (`idnomina`)
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`contacto_emergencia` (
   `correo_contacto` VARCHAR(45) NOT NULL,
   `empleado_idempleado` INT NOT NULL,
   PRIMARY KEY (`idcontacto_emergencia`),
-  INDEX `fk_contacto_emergencia_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_contacto_emergencia_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_contacto_emergencia_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`retiro_jubilacion` (
   `fecha_retiro` VARCHAR(45) NOT NULL,
   `empleado_idempleado` INT NOT NULL,
   PRIMARY KEY (`idjubilacion`),
-  INDEX `fk_retiro_jubilacion_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_retiro_jubilacion_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_retiro_jubilacion_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -189,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`empleado_has_Rotacion_personal` (
   `empleado_idempleado` INT NOT NULL,
   `Rotacion_personal_idRotacion_personal` INT NOT NULL,
   PRIMARY KEY (`empleado_idempleado`, `Rotacion_personal_idRotacion_personal`),
-  INDEX `fk_empleado_has_Rotacion_personal_Rotacion_personal1_idx` (`Rotacion_personal_idRotacion_personal` ASC) VISIBLE,
-  INDEX `fk_empleado_has_Rotacion_personal_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_empleado_has_Rotacion_personal_Rotacion_personal1_idx` (`Rotacion_personal_idRotacion_personal` ASC),
+  INDEX `fk_empleado_has_Rotacion_personal_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_empleado_has_Rotacion_personal_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -225,8 +225,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`empleado_has_permisos_vacaciones` (
   `empleado_idempleado` INT NOT NULL,
   `permisos_vacaciones_idpermisos_vacaciones` INT NOT NULL,
   PRIMARY KEY (`empleado_idempleado`, `permisos_vacaciones_idpermisos_vacaciones`),
-  INDEX `fk_empleado_has_permisos_vacaciones_permisos_vacaciones1_idx` (`permisos_vacaciones_idpermisos_vacaciones` ASC) VISIBLE,
-  INDEX `fk_empleado_has_permisos_vacaciones_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_empleado_has_permisos_vacaciones_permisos_vacaciones1_idx` (`permisos_vacaciones_idpermisos_vacaciones` ASC),
+  INDEX `fk_empleado_has_permisos_vacaciones_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_empleado_has_permisos_vacaciones_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -259,8 +259,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`empleado_has_vacantes` (
   `empleado_idempleado` INT NOT NULL,
   `vacantes_idvacantes` INT NOT NULL,
   PRIMARY KEY (`empleado_idempleado`, `vacantes_idvacantes`),
-  INDEX `fk_empleado_has_vacantes_vacantes1_idx` (`vacantes_idvacantes` ASC) VISIBLE,
-  INDEX `fk_empleado_has_vacantes_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_empleado_has_vacantes_vacantes1_idx` (`vacantes_idvacantes` ASC),
+  INDEX `fk_empleado_has_vacantes_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_empleado_has_vacantes_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`turno_horario` (
   `dias_semana` VARCHAR(45) NOT NULL,
   `empleado_idempleado` INT NOT NULL,
   PRIMARY KEY (`idturno_horario`),
-  INDEX `fk_turno_horario_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
+  INDEX `fk_turno_horario_empleado1_idx` (`empleado_idempleado` ASC),
   CONSTRAINT `fk_turno_horario_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
@@ -304,8 +304,8 @@ CREATE TABLE IF NOT EXISTS `ashuredb`.`asistencia` (
   `empleado_idempleado` INT NOT NULL,
   `turno_horario_idturno_horario` INT NOT NULL,
   PRIMARY KEY (`idasistencia`),
-  INDEX `fk_asistencia_empleado1_idx` (`empleado_idempleado` ASC) VISIBLE,
-  INDEX `fk_asistencia_turno_horario1_idx` (`turno_horario_idturno_horario` ASC) VISIBLE,
+  INDEX `fk_asistencia_empleado1_idx` (`empleado_idempleado` ASC),
+  INDEX `fk_asistencia_turno_horario1_idx` (`turno_horario_idturno_horario` ASC),
   CONSTRAINT `fk_asistencia_empleado1`
     FOREIGN KEY (`empleado_idempleado`)
     REFERENCES `ashuredb`.`empleado` (`idempleado`)
