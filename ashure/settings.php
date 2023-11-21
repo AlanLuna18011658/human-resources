@@ -90,7 +90,7 @@
             <div class="mb-3">
                <label for="currentPassword" class="form-label">
                ¿Necesitas cambiar la contraseña? Envíanos un correo ahora:
-               <a href="pdf/Ashure - Contacto.pdf" class="btn btn-link">Correos de contacto</a>
+               <a href="pdf/ashure_contacto.pdf" class="btn btn-link">Correos de contacto</a>
                </label>
          </form>
          <p>&copy;Ashure2023 todos los derechos reservados.</p>   
