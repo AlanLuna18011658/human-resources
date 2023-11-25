@@ -64,9 +64,6 @@
                <img src="font-first.jpeg" class="d-block w-100" alt="font-three">
             </div>
             <div class="carousel-item">
-               <img src="font-eight.jpeg" class="d-block w-100" alt="ashure_web">
-            </div>
-            <div class="carousel-item">
                <img src="ashure_web.jpg" class="d-block w-100" alt="ashure_web">
             </div>
          </div>
