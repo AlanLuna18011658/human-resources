@@ -1,15 +1,9 @@
 <?php
    require_once "validar_sesion.php";
+   include 'conexion.php';
 ?>
 <?php
-   $servername = "localhost";
-   $username = "root";
-   $password = "";
-   $dbname = "ashuredb";
-   $conn = new mysqli($servername, $username, $password, $dbname);
-   if ($conn->connect_error) {
-       die("Conexión fallida:" . $conn->connect_error);
-   }
+
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
        $tipo = $conn->real_escape_string($_POST["tipo"]);
        $motivo = $conn->real_escape_string($_POST["motivo"]);

@@ -1,3 +1,7 @@
+
+<?php
+include 'conexion.php';
+?>
 <?php
    session_start();
    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
@@ -6,27 +10,23 @@
        $a_materno = $_POST['amaterno'];
        $correoRegistro = $_POST['correoRegistro'];
        $contrasenaRegistro = $_POST['contrasenaRegistro'];
-       $conexion = new mysqli("localhost", "root", "", "ashuredb");
-   
-       if ($conexion->connect_error) {
-           die("Error de conexión:" . $conexion->connect_error);
-       }
+      
        $consulta = "SELECT idUsuario FROM usuario WHERE correo = '$correoRegistro'";
-       $resultado = $conexion->query($consulta);
+       $resultado = $conn->query($consulta);
        if ($resultado->num_rows > 0) {
            $errorRegistro = "El correo ya está registrado";
        } else {
            $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
            $consultaRegistro = "INSERT INTO usuario (idUsuario, nombre, apellido_paterno, apellido_materno, correo, contraseña) VALUES ('0','$nombre','$a_paterno', '$a_materno', '$correoRegistro', '$contrasenaEncriptada')";
    
-           if ($conexion->query($consultaRegistro) === TRUE) {
+           if ($conn->query($consultaRegistro) === TRUE) {
                header("Location: login.php");
                exit();
            } else {
                $errorRegistro = "Error al registrar el correo";
            }
        }
-       $conexion->close();
+       $conn->close();
    }
 ?>
 <!DOCTYPE html>
