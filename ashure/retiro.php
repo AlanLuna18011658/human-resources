@@ -11,13 +11,13 @@
        die("Conexión fallida:" . $conn->connect_error);
    }
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-       $tipo_permiso = $conn->real_escape_string($_POST["tipo_permiso"]);
-       $fecha_inicio = $conn->real_escape_string($_POST["fecha_inicio"]);
-       $fecha_fin = $conn->real_escape_string($_POST["fecha_fin"]);
-       $estado = $conn->real_escape_string($_POST["estado"]);
-       $motivo = $conn->real_escape_string($_POST["motivo"]);
-       $sql = "INSERT INTO permisos_vacaciones (idpermisos_vacaciones, tipo_permiso, fecha_inicio, fecha_fin, estado, motivo) 
-               VALUES ('0', '$tipo_permiso', '$fecha_inicio', '$fecha_fin', 'estado', 'motivo')";
+       $motivo_retiro = $conn->real_escape_string($_POST["motivo_retiro"]);
+       $tipo_retiro = $conn->real_escape_string($_POST["tipo_retiro"]);
+       $fecha_retiro = $conn->real_escape_string($_POST["fecha_retiro"]);
+       $empleado_idempleado = $conn->real_escape_string($_POST["empleado_idempleado"]);
+    
+       $sql = "INSERT INTO retiro_jubilacion (idjubilacion, motivo_retiro, tipo_retiro, fecha_retiro, empleado_idempleado) 
+               VALUES ('0', '$motivo_retiro', '$tipo_retiro', '$fecha_retiro', 'empleado_idempleado')";
       if ($conn->query($sql) === TRUE) {
          echo "Ashure - ¡Registro insertado correctamente!";
      } else {
@@ -28,13 +28,14 @@
 ?>
 <!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ashure - Permisos de vacaciones</title>
-      <link rel="icon" href="ashure.ico">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-      <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retiro y jubilación</title>
+    <link rel="icon" href="ashure.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
         /* css */
       @import url();
       *{
@@ -143,9 +144,8 @@
       transition: .4s; 
       }
       </style>
-   </head>
-   <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
             <img src="ashure.webp" alt="logo" width="200px" height="150px">
@@ -206,29 +206,21 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Permisos de vacaciones</h1>
+         <h1 id="uno"> Retiro y jubilación</h1>
          <section>
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                     <input type="text" name="tipo_permiso" required>
-                     <label for="tipo_permiso"> Tipo de permiso</label>
+                     <input type="text" name="motivo_retiro" required>
+                     <label for="motivo_retiro"> Motivo de retiro</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="fecha_inicio" required>
-                     <label for="fecha_inicio"> Fecha de inicio</label>
+                     <input type="text" name="tipo_retiro" required>
+                     <label for="tipo_retiro"> Tipo de retiro</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="fecha_fin" required>
-                     <label for="fecha_fin"> Fecha final</label>
-                  </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="estado" required>
-                     <label for="estado"> Estado</label>
-                  </div>
-                  <div class="input-contenedor">
-                     <input type="text" name="motivo" required>
-                     <label for="motivo"> Motivo</label>
+                     <input type="text" name="fecha_retiro" required>
+                     <label for="fecha_retiro"> Fecha de retiro</label>
                   </div>
                      <div>
                         <button type="submit">Enviar</button>
@@ -241,5 +233,5 @@
       </form>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-   </body>
+</body>
 </html>
