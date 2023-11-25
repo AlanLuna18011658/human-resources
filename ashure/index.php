@@ -26,7 +26,26 @@
                   </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                     Empleados
+                     Registro
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Turno y horario</a></li>
+                        <li><a class="dropdown-item" href="#">Vacantes</a></li>
+                        <li><a class="dropdown-item" href="#">Retiro y jubilación</a></li>
+                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
+                        <li><a class="dropdown-item" href="salud.php">Salud</a></li>
+                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
+                        <li>
+                           <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="empleado.php">Registro Empleado</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                     Consulta
                      </a>
                      <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Modulo</a></li>

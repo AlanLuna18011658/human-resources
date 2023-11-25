@@ -4,7 +4,7 @@
 <?php
    $servername = "localhost";
    $username = "root";
-   $password = "";
+   $password = "123456789";
    $dbname = "ashuredb";
    $conn = new mysqli($servername, $username, $password, $dbname);
    if ($conn->connect_error) {
