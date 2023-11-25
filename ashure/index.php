@@ -31,8 +31,8 @@
                      <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
                         <li><a class="dropdown-item" href="salud.php">Salud</a></li>
                         <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
                         <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
@@ -84,6 +84,9 @@
             </div>
             <div class="carousel-item">
                <img src="font-first.jpeg" class="d-block w-100" alt="font-three">
+            </div>
+            <div class="carousel-item">
+               <img src="font-eight.jpeg" class="d-block w-100" alt="ashure_web">
             </div>
             <div class="carousel-item">
                <img src="ashure_web.jpg" class="d-block w-100" alt="ashure_web">

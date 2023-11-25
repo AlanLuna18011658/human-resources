@@ -47,7 +47,7 @@
       padding:0;
       }
       body{
-      background: url(font-three.jpeg) no-repeat;
+      background: url(font-five.jpeg) no-repeat;
       background-position: center;
       background-size: cover;
       }
@@ -169,8 +169,8 @@
                      <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
                         <li><a class="dropdown-item" href="salud.php">Salud</a></li>
                         <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
                         <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
@@ -220,7 +220,6 @@
                   <div class="input-contenedor">
                   <select type="text" name="nombre" required>
                         <option value="id_foranea" id="empleado">Elige un empleado...</option>
-                        
                   </select>
                   </div>
                   <div class="input-contenedor">
@@ -237,7 +236,7 @@
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="h_med" required>
-                     <label for="h_med"> Historial médivo</label>
+                     <label for="h_med"> Historial médico</label>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="med_cabecera" required>
@@ -245,7 +244,7 @@
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="tel_med" required>
-                     <label for="tel_med"> Teléfon del médico</label>
+                     <label for="tel_med"> Teléfono del médico</label>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="ult_rev_med" required>
