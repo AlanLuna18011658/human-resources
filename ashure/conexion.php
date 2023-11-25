@@ -1,7 +1,7 @@
 <?php 
    $servidor = "localhost";
    $usuario = "root";
-   $clave = "123456789";
+   $clave = "";
    $dbname="prueba";
 
    $conexion = mysqli_connect($servidor,$usuario,$clave,$dbname);
