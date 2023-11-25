@@ -29,9 +29,9 @@
                      Registro
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Turno y horario</a></li>
-                        <li><a class="dropdown-item" href="#">Vacantes</a></li>
-                        <li><a class="dropdown-item" href="#">Retiro y jubilación</a></li>
+                        <li><a class="dropdown-item" href="turno.php">Turno y horario</a></li>
+                        <li><a class="dropdown-item" href="vacantes.php">Vacantes</a></li>
+                        <li><a class="dropdown-item" href="retiro.php">Retiro y jubilación</a></li>
                         <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
                         <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
                         <li><a class="dropdown-item" href="salud.php">Salud</a></li>
