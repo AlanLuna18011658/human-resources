@@ -1,12 +1,12 @@
 <?php
    require_once "validar_sesion.php";
-   ?>
+?>
 <!doctype html>
 <html lang="es">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Ashure - Ajustes</title>
+      <title>Ashure - Ayuda</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -21,10 +21,11 @@
       </style>
    </head>
    <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-            <img src="ashure.webp" alt="logo" width="200px" height="150px"></a>
+            <img src="ashure.webp" alt="logo" width="200px" height="150px">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,37 +41,19 @@
                      <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
                         <li><a class="dropdown-item" href="salud.php">Salud</a></li>
                         <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
-                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de personal</a></li>
+                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="empleado.php">Registro Empleado</a></li>
                      </ul>
                   </li>
-                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                     Administrativos
-                     </a>
-                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li>
-                           <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Nomina</a></li>
-                     </ul>
-                  </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="settings.php" aria-disabled="true">Ajustes</a>
+                     <a class="nav-link" href="settings.php" aria-disabled="true">Ayuda</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="<?php echo htmlspecialchars('destroy.php', ENT_QUOTES, 'UTF-8'); ?>" aria-disabled="true">Cerrar sesión</a>
@@ -85,7 +68,7 @@
             <input class="form-check-input" type="checkbox" id="darkModeSwitch">
             <label class="form-check-label" for="darkModeSwitch"></label>
          </div>
-         <h3>Ajustes</h3>
+         <h3>Ayuda</h3>
          <form class="mt-4">
             <div class="mb-3">
                <label for="currentPassword" class="form-label">

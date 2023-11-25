@@ -42,35 +42,13 @@
                         <li><a class="dropdown-item" href="empleado.php">Registro Empleado</a></li>
                      </ul>
                   </li>
-                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                     Administrativos
-                     </a>
-                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li>
-                           <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Nomina</a></li>
-                     </ul>
-                  </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="settings.php" aria-disabled="true">Ajustes</a>
+                     <a class="nav-link" href="settings.php" aria-disabled="true">Ayuda</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="<?php echo htmlspecialchars('destroy.php', ENT_QUOTES, 'UTF-8'); ?>" aria-disabled="true">Cerrar sesión</a>
                   </li>
                </ul>
-               <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Busqueda</button>
-               </form>
             </div>
          </div>
       </nav>
