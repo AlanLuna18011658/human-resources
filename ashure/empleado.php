@@ -23,12 +23,13 @@
        $cp = $conn->real_escape_string($_POST["cp"]);
        $correo = $conn->real_escape_string($_POST["correo"]);
        $fecha_contratacion = $conn->real_escape_string($_POST["fecha_contratacion"]);
-       $cargo = $conn->real_escape_string($_POST["cargo"]);
+       $cargo = $conn->real_escape_string($_POST["cargo"]); 
+       $departamento = $conn->real_escape_string($_POST["departamento"]);
        $salario = $conn->real_escape_string($_POST["salario"]);
        $activo = $conn->real_escape_string($_POST["activo"]);
 
-       $sql = "INSERT INTO empleado (idempleado, nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, salario, activo) 
-               VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo', '$salario', '$activo')";
+       $sql = "INSERT INTO empleado (idempleado, nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, departamento, salario, activo) 
+               VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo','$departamento' ,'$salario', '$activo')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
@@ -250,13 +251,14 @@
                      <input type="text" name="ciudad" required>
                      <label for="ciudad"> Ciudad</label>
                   </div>
-               </div>
-               <div class="contenedor2">
-                  <div class="formulario">
-                     <div class="input-contenedor">
+                  <div class="input-contenedor">
                         <input type="text" name="estado" required>
                         <label for="estado"> Estado</label>
                      </div>
+               </div>
+               <div class="contenedor2">
+                  <div class="formulario">
+                     
                      <div class="input-contenedor">
                         <input type="text" name="cp" required>
                         <label for="cp"> CP</label>
@@ -272,6 +274,10 @@
                      <div class="input-contenedor">
                         <input type="text" name="cargo" required>
                         <label for="cargo"> Cargo</label>
+                     </div>
+                     <div class="input-contenedor">
+                        <input type="text" name="departamento" required>
+                        <label for="departamento"> Departamento</label>
                      </div>
                      <div class="input-contenedor">
                         <input type="text" name="salario" required>
