@@ -211,6 +211,9 @@
          <section>
             <div class="contenedor">
             <div class="formulario">
+            <select type="text" name="nombre" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
+                  </select>
                <div class="input-contenedor">
                   <input type="text" name="fecha_pago" required>
                   <label for="fecha_pago"> Fecha de pago</label>
