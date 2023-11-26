@@ -3,140 +3,138 @@
    include 'conexion.php';
 ?>
 <?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-       $nombre_contacto = $conn->real_escape_string($_POST["nombre_contacto"]);
-       $relacion_contacto = $conn->real_escape_string($_POST["relacion_contacto"]);
-       $telefono_contacto = $conn->real_escape_string($_POST["telefono_contacto"]);
-       $correo_contacto = $conn->real_escape_string($_POST["correo_contacto"]);
-       $empleado_idempleado = $conn->real_escape_string($_POST["empleado_idempleado"]);
-
-       $sql = "INSERT INTO contacto_emergencia (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
-               VALUES ('0', '$nombre_contacto', '$relacion_contacto', '$telefono_contacto', '$correo_contacto', '$empleado_idempleado')";
+ 
+   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+       $nombre_turno = $conn->real_escape_string($_POST["nombre_turno"]);
+       $hora_inicio = $conn->real_escape_string($_POST["hora_inicio"]);
+       $hora_fin = $conn->real_escape_string($_POST["hora_fin"]);
+       $dias_semana = $conn->real_escape_string($_POST["dias_semana"]);
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       $sql = "INSERT INTO turno_horario (idturno_horario, nombre_turno, hora_inicio, hora_fin, dias_semana, empleado_idempleado) 
+               VALUES ('0','$nombre_turno', ' $hora_inicio', '$hora_fin', '$dias_semana', '$id_foranea ')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   
    }
-   $conn->close();
-   ?>
+?>
 <!doctype html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ashure - Contacto de emergencia</title>
+      <title>Ashure - Turno y Horario</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
-         @import url();
-         *{
-         font-family: 'Poppins', sans-serif;
-         margin:0;
-         padding:0;
-         }
-         body{
-         background: url(fondogalaxia.jpg) no-repeat;
-         background-position: center;
-         background-size: cover;
-         }
-         section{
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         width: 100% ;
-         min-height: 100vh;
-         }
-         .contenedor{
-         position: relative;
-         width: 700px;
-         border: 2px solid rgba(255,255,255, .6);
-         border-radius: 20px;
-         backdrop-filter: blur(15px);
-         height: 680px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         }
-         .contenedor2{
-         position: relative;
-         width: 700px;
-         border-radius: 20px;
-         backdrop-filter: blur(15px);
-         height: 800px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         }
-         .contenedor h2{
-         font-size: 2.3rem;
-         color: #fff;
-         text-align: right;
-         }
-         #h22{
-         font-size: 2.3rem;
-         color:;
-         text-align: left;
-         }
-         #uno{
-         position: relative;
-         top: 10px;
-         font-size: 2.3rem;
-         color: #FFF;
-         text-align: center;
-         }
-         .input-contenedor{
-         position: relative;
-         margin: 30px 0;
-         width: 300px;
-         border-bottom: 2px solid #fff ;
-         }
-         .input-contenedor label{
-         position: absolute;
-         top: 50%;
-         left: 5px ;
-         transform: translateY(-50%);
-         color: #fff;
-         font-size: 1rem;
-         pointer-events: none;
-         transition: .6s;
-         font-weight: bold;
-         }
-         input:focus ~ label,
-         input:valid ~ label{
+        /* css */
+      @import url();
+      *{
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      padding:0;
+      }
+      body{
+      background: url(fondogalaxia.jpg) no-repeat;
+      background-position: center;
+      background-size: cover;
+      }
+      section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100% ;
+      min-height: 100vh;
+      }
+      .contenedor{
+      position: relative;
+      width: 500px;
+      border: 2px solid rgba(255,255,255, .6);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      height: 750px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .contenedor2{
+      position: relative;
+      width: 400px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .contenedor h2{
+      font-size: 2.3rem;
+      color: #fff;
+      text-align: right;
+      }
+      #h22{
+      font-size: 2.3rem;
+      color:;
+      text-align: left;
+      }
+      #uno{
+      position: relative;
+      top: 10px;
+      font-size: 2.3rem;
+      color: #FFF;
+      text-align: center;
+      }
+      .input-contenedor{
+      position: relative;
+      margin: 30px 0;
+      width: 300px;
+      border-bottom: 2px solid #fff ;
+      }
+      .input-contenedor label{
+      position: absolute;
+      top: 50%;
+      left: 5px ;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: .6s;
+      font-weight: bold;
+      }
+      input:focus ~ label,
+      input:valid ~ label{
          top: -5px;
-         }
-         .input-contenedor input{
-         width: 100%;
-         height: 50px;
-         background-color: transparent;
-         border: none;
-         outline: none;
-         font-size: 1rem;
-         padding: - 35px 0 5px;
-         color: #fff;
-         }
-         .input-contenedor i{
-         position: absolute;
-         color: #fff;
-         font-size: 1.6rem;
-         top: 19px
-         right: 8px;
-         }
-         button{
-         width: 100%;
-         height: 45px;
-         border-radius: 40px;
-         background: #fff;
-         border: none;
-         font-weight: bold;
-         cursor: pointer;
-         outline: none;
-         font-size: 1rem;
-         transition: .4s; 
-         }
+      }
+      .input-contenedor input{
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: - 35px 0 5px;
+      color: #fff;
+      }
+      .input-contenedor i{
+      position: absolute;
+      color: #fff;
+      font-size: 1.6rem;
+      top: 19px
+      right: 8px;
+      }
+      button{
+      width: 100%;
+      height: 45px;
+      border-radius: 40px;
+      background: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      font-size: 1rem;
+      transition: .4s; 
+      }
       </style>
    </head>
    <body>
@@ -201,32 +199,43 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Contacto de emergencia</h1>
+         <h1 id="uno"> Turno y Horario</h1>
          <section>
             <div class="contenedor">
-            <div class="formulario">
-            <select type="text" name="nombre" required>
-                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
+               <div class="formulario">
+                  <div class="input-contenedor">
+                  <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                        <?php
+                        $sql = $conn-> query("SELECT * FROM empleado");
+                        while($fila=$sql->fetch_array()){
+                           echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                        }
+                        $conn->close();
+                        ?>
+                        </option>
                   </select>
-               <div class="input-contenedor">
-                  <input type="text" name="nombre_contacto" required>
-                  <label for="nombre_contacto"> Nombre de contacto</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="nombre_turno" required>
+                     <label for="nombre_turno"> Nombre del turno</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="hora_inicio" required>
+                     <label for="hora_inicio">Hora de inicio</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="hora_fin" required>
+                     <label for="hora_fin"> Hora de finalización</label>
+                  </div> 
+                  <div class="input-contenedor">
+                     <input type="text" name="dias_semana" required>
+                     <label for="dias_semana"> Dias semana</label>
+                  </div>
+                  <div>
+                        <button type="submit">Enviar</button>
+                     </div>
                </div>
-               <div class="input-contenedor">
-                  <input type="text" name="relacion_contacto" required>
-                  <label for="relacion_contacto"> Relacion de contacto</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="telefono_contacto" required>
-                  <label for="telefono_contacto"> Telefono de contacto</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="correo_contacto" required>
-                  <label for="correo_contacto"> Correo de contacto</label>
-               </div>
-               <div>
-                    <button type="submit">Enviar</button>
-                </div>
             </div>
          </section>
       </form>

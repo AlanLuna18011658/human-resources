@@ -157,7 +157,7 @@
                      Registro
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="turno.php">Turno y horario</a></li>
+                        <li><a class="dropdown-item" href="turno_horario.php">Turno y horario</a></li>
                         <li><a class="dropdown-item" href="vacantes.php">Vacantes</a></li>
                         <li><a class="dropdown-item" href="retiro.php">Retiro y jubilación</a></li>
                         <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
