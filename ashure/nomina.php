@@ -1,25 +1,24 @@
 <?php
    require_once "validar_sesion.php";
-   include 'conexion.php'
-?>
+   include 'conexion.php';
+   ?>
 <?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      
+   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $fecha_pago = $conn->real_escape_string($_POST["fecha_pago"]);
        $monto_bruto = $conn->real_escape_string($_POST["monto_bruto"]);
        $deducciones = $conn->real_escape_string($_POST["deducciones"]);
        $monto_neto = $conn->real_escape_string($_POST["monto_neto"]);
-   
-       $sql = "INSERT INTO nomina (idnomina, fecha_pago, monto_bruto, deducciones, monto_neto) 
-               VALUES ('0', '$fecha_pago', '$monto_bruto', '$deducciones', '$monto_neto')";
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       
+       $sql = "INSERT INTO nomina (idnomina, fecha_pago, monto_bruto, deducciones, monto_neto, empleado_idempleado) 
+               VALUES ('0','$fecha_pago', ' $monto_bruto', '$deducciones', '$monto_neto', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   
    }
-   $conn->close();
+   
    ?>
 <!doctype html>
 <html lang="en">
@@ -30,6 +29,7 @@
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
+         /* css */
          @import url();
          *{
          font-family: 'Poppins', sans-serif;
@@ -50,18 +50,18 @@
          }
          .contenedor{
          position: relative;
-         width: 700px;
+         width: 500px;
          border: 2px solid rgba(255,255,255, .6);
          border-radius: 20px;
          backdrop-filter: blur(15px);
-         height: 680px;
+         height: 750px;
          display: flex;
          justify-content: center;
          align-items: center;
          }
          .contenedor2{
          position: relative;
-         width: 700px;
+         width: 400px;
          border-radius: 20px;
          backdrop-filter: blur(15px);
          height: 800px;
@@ -139,7 +139,7 @@
       </style>
    </head>
    <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
             <img src="ashure.webp" alt="logo" width="200px" height="150px">
@@ -200,32 +200,43 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Nomina</h1>
+         <h1 id="uno">Nomina</h1>
          <section>
             <div class="contenedor">
-            <div class="formulario">
-            <select type="text" name="nombre" required>
-                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
-                  </select>
-               <div class="input-contenedor">
-                  <input type="text" name="fecha_pago" required>
-                  <label for="fecha_pago"> Fecha de pago</label>
+               <div class="formulario">
+                  <div class="input-contenedor">
+                     <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                           <?php
+                              $sql = $conn-> query("SELECT * FROM empleado");
+                              while($fila=$sql->fetch_array()){
+                                 echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                              }
+                              $conn->close();
+                              ?>
+                        </option>
+                     </select>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="fecha_pago" required>
+                     <label for="fecha_pago">Fecha de pago</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="monto_bruto" required>
+                     <label for="monto_bruto">Monto bruto</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="deducciones" required>
+                     <label for="deducciones">Deducciones</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="monto_neto" required>
+                     <label for="monto_neto">Monto neto</label>
+                  </div>
+                  <div>
+                     <button type="submit">Enviar</button>
+                  </div>
                </div>
-               <div class="input-contenedor">
-                  <input type="text" name="monto_bruto" required>
-                  <label for="monto_bruto"> Monto bruto</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="deducciones" required>
-                  <label for="deducciones"> Deducciones</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="monto_neto" required>
-                  <label for="monto_neto"> Monto neto</label>
-               </div>
-               <div>
-                    <button type="submit">Enviar</button>
-                </div>
             </div>
          </section>
       </form>

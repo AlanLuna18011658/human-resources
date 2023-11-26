@@ -1,26 +1,23 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-?>
+   ?>
 <?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      
+   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $nombre_contacto = $conn->real_escape_string($_POST["nombre_contacto"]);
        $relacion_contacto = $conn->real_escape_string($_POST["relacion_contacto"]);
        $telefono_contacto = $conn->real_escape_string($_POST["telefono_contacto"]);
        $correo_contacto = $conn->real_escape_string($_POST["correo_contacto"]);
-       $empleado_idempleado = $conn->real_escape_string($_POST["empleado_idempleado"]);
-
-       $sql = "INSERT INTO contacto_emergencia (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
-               VALUES ('0', '$nombre_contacto', '$relacion_contacto', '$telefono_contacto', '$correo_contacto', '$empleado_idempleado')";
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       
+       $sql = "INSERT INTO nomina (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
+               VALUES ('0','$nombre_contacto', ' $relacion_contacto', '$telefono_contacto', '$correo_contacto', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   
    }
-   $conn->close();
    ?>
 <!doctype html>
 <html lang="en">
@@ -31,6 +28,7 @@
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
+         /* css */
          @import url();
          *{
          font-family: 'Poppins', sans-serif;
@@ -51,18 +49,18 @@
          }
          .contenedor{
          position: relative;
-         width: 700px;
+         width: 500px;
          border: 2px solid rgba(255,255,255, .6);
          border-radius: 20px;
          backdrop-filter: blur(15px);
-         height: 680px;
+         height: 750px;
          display: flex;
          justify-content: center;
          align-items: center;
          }
          .contenedor2{
          position: relative;
-         width: 700px;
+         width: 400px;
          border-radius: 20px;
          backdrop-filter: blur(15px);
          height: 800px;
@@ -140,7 +138,7 @@
       </style>
    </head>
    <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
             <img src="ashure.webp" alt="logo" width="200px" height="150px">
@@ -201,32 +199,43 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Contacto de emergencia</h1>
+         <h1 id="uno">Contacto de emergencia</h1>
          <section>
             <div class="contenedor">
-            <div class="formulario">
-            <select type="text" name="nombre" required>
-                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
-                  </select>
-               <div class="input-contenedor">
-                  <input type="text" name="nombre_contacto" required>
-                  <label for="nombre_contacto"> Nombre de contacto</label>
+               <div class="formulario">
+                  <div class="input-contenedor">
+                     <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                           <?php
+                              $sql = $conn-> query("SELECT * FROM empleado");
+                              while($fila=$sql->fetch_array()){
+                                 echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                              }
+                              $conn->close();
+                              ?>
+                        </option>
+                     </select>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="nombre_contacto" required>
+                     <label for="nombre_contacto">Nombre de contacto</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="relacion_contacto" required>
+                     <label for="relacion_contacto">Relacion de contacto</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="telefono_contacto" required>
+                     <label for="telefono_contacto">Telefono de contacto</label>
+                  </div>
+                  <div class="input-contenedor">
+                     <input type="text" name="correo_contacto" required>
+                     <label for="correo_contacto">Correo de contacto</label>
+                  </div>
+                  <div>
+                     <button type="submit">Enviar</button>
+                  </div>
                </div>
-               <div class="input-contenedor">
-                  <input type="text" name="relacion_contacto" required>
-                  <label for="relacion_contacto"> Relacion de contacto</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="telefono_contacto" required>
-                  <label for="telefono_contacto"> Telefono de contacto</label>
-               </div>
-               <div class="input-contenedor">
-                  <input type="text" name="correo_contacto" required>
-                  <label for="correo_contacto"> Correo de contacto</label>
-               </div>
-               <div>
-                    <button type="submit">Enviar</button>
-                </div>
             </div>
          </section>
       </form>
