@@ -3,18 +3,19 @@
    include 'conexion.php';
 ?>
 <?php
-  
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
       #tabla usuario
-       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       
        $tipo_sangre = $conn->real_escape_string($_POST["tipo_sangre"]);
-       $Alergias = $conn->real_escape_string($_POST["Alergias"]);
+       $Alergias = $conn->real_escape_string($_POST["alergias"]);
        $enf_cron = $conn->real_escape_string($_POST["enf_cron"]);
        $h_med = $conn->real_escape_string($_POST["h_med"]);
        $med_cabecera = $conn->real_escape_string($_POST["med_cabecera"]);
        $tel_med = $conn->real_escape_string($_POST["tel_med"]);
        $ult_rev_med = $conn->real_escape_string($_POST["ult_rev_med"]);
-       $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision(fecha), empleado_idempleado) 
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision_fecha, empleado_idempleado) 
                VALUES ('0','$tipo_sangre', ' $Alergias', '$enf_cron', '$h_med', '$med_cabecera', '$tel_med', '$ult_rev_med', '$id_foranea ')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
@@ -22,7 +23,7 @@
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
    }
-   $conn->close();
+   
 ?>
 <!doctype html>
 <html lang="en">
@@ -209,8 +210,17 @@
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                  <select type="text" name="nombre" required>
-                        <option value="id_foranea" id="empleado">Elige un empleado...</option>
+                  <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                        
+                        <?php
+                        $sql = $conn-> query("SELECT * FROM empleado");
+                        while($fila=$sql->fetch_array()){
+                           echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                        }
+                        $conn->close();
+                        ?>
+                        </option>
                   </select>
                   </div>
                   <div class="input-contenedor">
@@ -218,13 +228,14 @@
                      <label for="tipo_sangre"> Tipo de sangre</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="Alergias" required>
-                     <label for="Alergias">Alergias</label>
+                     <input type="text" name="alergias" required>
+                     <label for="alergias">Alergias</label>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="enf_cron" required>
                      <label for="enf_cron"> Enfermedades crónicas</label>
-                  </div>
+                  </div> 
+                  <!-- dos -->
                   <div class="input-contenedor">
                      <input type="text" name="h_med" required>
                      <label for="h_med"> Historial médico</label>
