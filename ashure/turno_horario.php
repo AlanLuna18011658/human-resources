@@ -3,27 +3,28 @@
    include 'conexion.php';
 ?>
 <?php
-
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-       $tipo = $conn->real_escape_string($_POST["tipo"]);
-       $motivo = $conn->real_escape_string($_POST["motivo"]);
-       $fecha = $conn->real_escape_string($_POST["fecha"]);
-       $sql = "INSERT INTO rotacion_personal (idRotacion_personal, tipo, motivo, fecha) 
-               VALUES ('0', '$tipo', '$motivo', '$fecha')";
-      if ($conn->query($sql) === TRUE) {
-         echo "Ashure - ¡Registro insertado correctamente!";
-     } else {
-         echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
-     }
+ 
+   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+       $nombre_turno = $conn->real_escape_string($_POST["nombre_turno"]);
+       $hora_inicio = $conn->real_escape_string($_POST["hora_inicio"]);
+       $hora_fin = $conn->real_escape_string($_POST["hora_fin"]);
+       $dias_semana = $conn->real_escape_string($_POST["dias_semana"]);
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       $sql = "INSERT INTO turno_horario (idturno_horario, nombre_turno, hora_inicio, hora_fin, dias_semana, empleado_idempleado) 
+               VALUES ('0','$nombre_turno', ' $hora_inicio', '$hora_fin', '$dias_semana', '$id_foranea ')";
+       if ($conn->query($sql) === TRUE) {
+           echo "Ashure - ¡Registro insertado correctamente!";
+       } else {
+           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
+       }
    }
-   $conn->close();
 ?>
 <!doctype html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ashure - Rotación de personal</title>
+      <title>Ashure - Turno y Horario</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -48,11 +49,11 @@
       }
       .contenedor{
       position: relative;
-      width: 700px;
+      width: 500px;
       border: 2px solid rgba(255,255,255, .6);
       border-radius: 20px;
       backdrop-filter: blur(15px);
-      height: 800px;
+      height: 750px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -198,27 +199,42 @@
          </div>
       </nav>
       <form method="POST" action="">
-         <h1 id="uno"> Rotacion de personal</h1>
+         <h1 id="uno"> Turno y Horario</h1>
          <section>
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                     <input type="text" name="tipo" required>
-                     <label for="tipo"> Tipo</label>
+                  <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                        <?php
+                        $sql = $conn-> query("SELECT * FROM empleado");
+                        while($fila=$sql->fetch_array()){
+                           echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                        }
+                        $conn->close();
+                        ?>
+                        </option>
+                  </select>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="motivo" required>
-                     <label for="motivo"> Motivo</label>
+                     <input type="text" name="nombre_turno" required>
+                     <label for="nombre_turno"> Nombre del turno</label>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="fecha" required>
-                     <label for="fecha"> Fecha</label>
+                     <input type="text" name="hora_inicio" required>
+                     <label for="hora_inicio">Hora de inicio</label>
                   </div>
-                     <div>
+                  <div class="input-contenedor">
+                     <input type="text" name="hora_fin" required>
+                     <label for="hora_fin"> Hora de finalización</label>
+                  </div> 
+                  <div class="input-contenedor">
+                     <input type="text" name="dias_semana" required>
+                     <label for="dias_semana"> Dias semana</label>
+                  </div>
+                  <div>
                         <button type="submit">Enviar</button>
                      </div>
-                     </div>
-                  </div>
                </div>
             </div>
          </section>
