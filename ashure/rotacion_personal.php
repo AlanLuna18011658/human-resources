@@ -8,15 +8,17 @@
        $tipo = $conn->real_escape_string($_POST["tipo"]);
        $motivo = $conn->real_escape_string($_POST["motivo"]);
        $fecha = $conn->real_escape_string($_POST["fecha"]);
-       $sql = "INSERT INTO rotacion_personal (idRotacion_personal, tipo, motivo, fecha) 
-               VALUES ('0', '$tipo', '$motivo', '$fecha')";
+       $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+
+       $sql = "INSERT INTO rotacion_personal (idRotacion_personal, tipo, motivo, fecha,empleado_idempleado) 
+               VALUES ('0', '$tipo', '$motivo', '$fecha','$id_foranea')";
       if ($conn->query($sql) === TRUE) {
          echo "Ashure - ¡Registro insertado correctamente!";
      } else {
          echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
      }
    }
-   $conn->close();
+  
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,11 +50,11 @@
       }
       .contenedor{
       position: relative;
-      width: 700px;
+      width: 500px;
       border: 2px solid rgba(255,255,255, .6);
       border-radius: 20px;
       backdrop-filter: blur(15px);
-      height: 800px;
+      height: 600px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -202,6 +204,20 @@
          <section>
             <div class="contenedor">
                <div class="formulario">
+               <div class="input-contenedor">
+                     <select type="text" name="id_foranea" required>
+                        <option value="id_foranea" id="empleado">Elige un empleado...
+                        
+                           <?php
+                           $sql = $conn-> query("SELECT * FROM empleado");
+                           while($fila=$sql->fetch_array()){
+                              echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                           }
+                           $conn->close();
+                           ?>
+                        </option>
+                     </select>
+                  </div>
                   <div class="input-contenedor">
                      <input type="text" name="tipo" required>
                      <label for="tipo"> Tipo</label>

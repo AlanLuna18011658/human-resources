@@ -15,6 +15,7 @@
        $tel_med = $conn->real_escape_string($_POST["tel_med"]);
        $ult_rev_med = $conn->real_escape_string($_POST["ult_rev_med"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
+       
        $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision_fecha, empleado_idempleado) 
                VALUES ('0','$tipo_sangre', ' $Alergias', '$enf_cron', '$h_med', '$med_cabecera', '$tel_med', '$ult_rev_med', '$id_foranea ')";
        if ($conn->query($sql) === TRUE) {
@@ -210,18 +211,18 @@
             <div class="contenedor">
                <div class="formulario">
                   <div class="input-contenedor">
-                  <select type="text" name="id_foranea" required>
+                     <select type="text" name="id_foranea" required>
                         <option value="id_foranea" id="empleado">Elige un empleado...
                         
-                        <?php
-                        $sql = $conn-> query("SELECT * FROM empleado");
-                        while($fila=$sql->fetch_array()){
-                           echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
-                        }
-                        $conn->close();
-                        ?>
+                           <?php
+                           $sql = $conn-> query("SELECT * FROM empleado");
+                           while($fila=$sql->fetch_array()){
+                              echo"<option value='".$fila['idempleado']."'>".$fila['nombre']."</option>";
+                           }
+                           $conn->close();
+                           ?>
                         </option>
-                  </select>
+                     </select>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="tipo_sangre" required>
