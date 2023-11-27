@@ -1,7 +1,7 @@
 <?php 
    $servidor = "localhost";
    $usuario = "root";
-   $clave = "";
+   $clave = "123456789";
    $dbname="ashuredb";
 
    $conn = mysqli_connect($servidor,$usuario,$clave,$dbname);

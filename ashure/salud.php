@@ -205,6 +205,7 @@
             </div>
          </div>
       </nav>
+      <!-- formulario -->
       <form method="POST" action="">
          <h1 id="uno"> Datos de salud</h1>
          <section>
