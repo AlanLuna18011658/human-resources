@@ -50,15 +50,15 @@
                      <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
-                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
-                        <li><a class="dropdown-item" href="salud.php">Salud</a></li>
-                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
-                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
+                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                        <li><a class="dropdown-item" href="#">Modulo</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="empleado.php">Registro Empleado</a></li>
+                        <li><a class="dropdown-item" href="consulta.php">Empleados</a></li>
                      </ul>
                   </li>
                   <li class="nav-item">
