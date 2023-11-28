@@ -109,13 +109,12 @@
                                              <option value=" <?php echo $_POST["buscardepartamento"];?>"><?php echo $_POST["buscardepartamento"];?> </option>
                                              <?php } ?>
                                              <option value="">Todos</option>
-                                             <option value="Desarrollo"></option>
-                                             <option value="RH"></option>
-                                             <option value="Mantenimiento"></option>
-                                             <option value="Prducción"></option>
-                                             <option value="Sistemas"></option>
-                                             <option value="Compras"></option>
-                                             <option value="Ventas"></option>
+                                             <option value="Desarrollo">Desarrollo</option>
+                                             <option value="RH">RH</option>
+                                             <option value="Mantenimiento">Mantenimiento</option>
+                                             <option value="Sistemas">Sistemas</option>
+                                             <option value="Compras">Compras</option>
+                                             <option value="Ventas">Ventas</option>
                                           </select>
                                        </th>
                                        <th>
@@ -138,12 +137,12 @@
                                           Cargo
                                           <select id="cargo" name="cargo" class="" style=" border: #bababa 1px; color:#000000;">
                                              <?php if ($_POST["cargo"] != ''){ ?>
-                                             <option value=" <?php echo $_POST["cargo"];?>"><?php echo $_POST["cargo"];?> </option>
+                                             <option value="<?php echo $_POST['cargo'];?>"> <?php echo $_POST['cargo'];?></option>
                                              <?php } ?>
                                              <option value="">Todos</option>
-                                             <option value="Ceo"></option>
-                                             <option value="Direccion"></option>
-                                             <option value="Gerencia"></option>
+                                             <option value="Ceo">Ceo</option>
+                                             <option value="Direccion">Direccion</option>
+                                             <option value="Gerencia">Gerencia</option>
                                           </select>
                                        </th>
                                     </tr>
@@ -161,24 +160,24 @@
                                              <?php if ($_POST["orden"] != ''){ ?>
                                              <optiom value="<?php echo $_POST["orden"]; ?>">
                                              <?php
-                                                if ($_POST["orden"] == '1'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '2'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '3'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '4'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '5'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '6'){echo 'Ordenar por';}
-                                                if ($_POST["orden"] == '7'){echo 'Ordenar por';}
+                                                if ($_POST["orden"] == '1'){echo 'Ordenar por nombre';}
+                                                if ($_POST["orden"] == '2'){echo 'Ordenar por departamento';}
+                                                if ($_POST["orden"] == '3'){echo 'Ordenar por cargo';}
+                                                if ($_POST["orden"] == '4'){echo 'Ordenar por precio de menor a mayor';}
+                                                if ($_POST["orden"] == '5'){echo 'Ordenar por precio de mayor a menor';}
+                                                if ($_POST["orden"] == '6'){echo 'Ordenar por fecha reciente';}
+                                                if ($_POST["orden"] == '7'){echo 'Ordenar por fecha antigua';}
                                                 ?>
                                              </option>
                                              <?php } ?>
                                              <option value=""></option>
-                                             <option value="1">Ordenar por</option>
-                                             <option value="2">Ordenar por</option>
-                                             <option value="3">Ordenar por</option>
-                                             <option value="4">Ordenar por</option>
-                                             <option value="5">Ordenar por</option>
-                                             <option value="6">Ordenar por</option>
-                                             <option value="7">Ordenar por</option>
+                                             <option value="1">Ordenar por nombre</option>
+                                             <option value="2">Ordenar por departamento</option>
+                                             <option value="3">Ordenar por cargo</option>
+                                             <option value="4">Ordenar por precio de menor a mayor</option>
+                                             <option value="5">Ordenar por precio de mayor a menor</option>
+                                             <option value="6">Ordenar por fecha reciente</option>
+                                             <option value="7">Ordenar por fecha antigua</option>
                                           </select>
                                        </th>
                                     </tr>
@@ -216,11 +215,11 @@
                         <table class="table">
                         <thead>
                            <tr style="background-color:purple; color:#ffffff;">
-                              <th style="text-align: center;">Titulo</th>
-                              <th style="text-align: center;">Titulo</th>
-                              <th style="text-align: center;">TItulo</th>
-                              <th style="text-align: center;">Titulo</th>
-                              <th style="text-align: center;">Titulo</th>
+                              <th style="text-align: center;">Nombre</th>
+                              <th style="text-align: center;">Departamento</th>
+                              <th style="text-align: center;">Cargo</th>
+                              <th style="text-align: center;">Sueldo</th>
+                              <th style="text-align: center;">Fecha</th>
                            </tr>
                         </thead>
                         <tbody>
