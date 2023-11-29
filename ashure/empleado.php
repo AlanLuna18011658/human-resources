@@ -188,17 +188,18 @@
                      Consulta
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="contacto_emergencia.php">Contacto de emergencia</a></li>
-                        <li><a class="dropdown-item" href="nomina.php">Nomina</a></li>
-                        <li><a class="dropdown-item" href="salud.php">Salud</a></li>
-                        <li><a class="dropdown-item" href="permisos_vacaciones.php">Permisos de vacaciones</a></li>
-                        <li><a class="dropdown-item" href="rotacion_personal.php">Rotacion de Personal</a></li>
+                     <li><a class="dropdown-item" href="mostrar_turnos_horarios.php">Turno y horario</a></li>
+                        <li><a class="dropdown-item" href="mostrar_vacantes.php">Vacantes</a></li>
+                        <li><a class="dropdown-item" href="mostrar_retiro.php">Retiro y jubilación</a></li>
+                        <li><a class="dropdown-item" href="mostrar_contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="mostrar_nomina.php">Nomina</a></li>
+                        <li><a class="dropdown-item" href="mostrar_salud.php">Salud</a></li>
+                        <li><a class="dropdown-item" href="mostrar_permisos_vacaciones.php">Permisos y vacaciones</a></li>
+                        <li><a class="dropdown-item" href="mostrar_rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="empleado.php">Registro Empleado</a></li>
+                        <li><a class="dropdown-item" href="mostrar_empleados.php">Empleado</a></li>
                      </ul>
                   </li>
                   <li class="nav-item">
@@ -210,6 +211,7 @@
                </ul>
             </div>
          </div>
+      </nav>
       </nav>
       <form method="POST" action="">
          <h1 id="uno"> Registro de empleado</h1>

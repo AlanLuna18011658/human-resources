@@ -11,7 +11,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    </head>
    <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
          <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
             <img src="ashure.webp" alt="logo" width="200px" height="150px">
@@ -48,17 +48,18 @@
                      Consulta
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
-                        <li><a class="dropdown-item" href="#">Modulo</a></li>
+                     <li><a class="dropdown-item" href="mostrar_turnos_horarios.php">Turno y horario</a></li>
+                        <li><a class="dropdown-item" href="mostrar_vacantes.php">Vacantes</a></li>
+                        <li><a class="dropdown-item" href="mostrar_retiro.php">Retiro y jubilación</a></li>
+                        <li><a class="dropdown-item" href="mostrar_contacto_emergencia.php">Contacto de emergencia</a></li>
+                        <li><a class="dropdown-item" href="mostrar_nomina.php">Nomina</a></li>
+                        <li><a class="dropdown-item" href="mostrar_salud.php">Salud</a></li>
+                        <li><a class="dropdown-item" href="mostrar_permisos_vacaciones.php">Permisos y vacaciones</a></li>
+                        <li><a class="dropdown-item" href="mostrar_rotacion_personal.php">Rotacion de Personal</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="consulta.php">Empleados</a></li>
+                        <li><a class="dropdown-item" href="mostrar_empleados.php">Empleado</a></li>
                      </ul>
                   </li>
                   <li class="nav-item">
