@@ -192,13 +192,12 @@ if(mysqli_num_rows($resempleado) == 0) {
                            <td>'.$mostrar['salario'].'</td>
                            <td>'.$mostrar['activo'].'</td>
                            <td>
-                           <button href=".php?idempleado='.$mostrar['idempleado'].'">Actualizar</button> | 
-                           <button href=".php?idempleado='.$mostrar['idempleado'].'">Eliminar</button>
+                           <button type="button" class="btn btn-outline-success">Actualizar</button> | 
+                           <button type="button" class="btn btn-outline-danger">Eliminar</button>
                            </td>
                        ';
                }
                ?>
-           
          </table>
       <?php 
        echo $mensaje;
