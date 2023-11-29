@@ -52,7 +52,7 @@ if(mysqli_num_rows($resempleado) == 0) {
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Ashure - Inicio</title>
+      <title>Ashure - Mostrar_empleados</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -168,12 +168,18 @@ if(mysqli_num_rows($resempleado) == 0) {
                <td>Nombre</td>
                <td>Apellido paterno</td>
                <td>Apellido materno</td>
-               <td>Nombre del turno</td>
-               <td>Hora de inicio</td>
-               <td>hora_fin</td>
-               <td>dias_semana</td>
-
-         
+               <td>Teléfono</td>
+               <td>Genero</td>
+               <td>Calle</td>
+               <td>Ciudad</td>
+               <td>Estado</td>
+               <td>CP</td>
+               <td>Correo</td>
+               <td>Fecha contratacion</td>
+               <td>Cargo</td>
+               <td>Departamento</td>
+               <td>Salario</td>
+               <td>Activo</td>
             </tr>
             <?php 
                while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
@@ -183,11 +189,18 @@ if(mysqli_num_rows($resempleado) == 0) {
                            <td>'.$mostrar['nombre'].'</td>
                            <td>'.$mostrar['apellido_paterno'].'</td>
                            <td>'.$mostrar['apellido_materno'].'</td>
-                           <td>'.$mostrar['nombre_turno'].'</td>
-                           <td>'.$mostrar['hora_inicio'].'</td>
-                           <td>'.$mostrar['hora_fin'].'</td>
-                           <td>'.$mostrar['dias_semana'].'</td>
-                           </tr>
+                           <td>'.$mostrar['telefono'].'</td>
+                           <td>'.$mostrar['genero'].'</td>
+                           <td>'.$mostrar['calle'].'</td>
+                           <td>'.$mostrar['ciudad'].'</td>
+                           <td>'.$mostrar['estado'].'</td>
+                           <td>'.$mostrar['cp'].'</td>
+                           <td>'.$mostrar['correo'].'</td>
+                           <td>'.$mostrar['fecha_contratacion'].'</td>
+                           <td>'.$mostrar['cargo'].'</td>
+                           <td>'.$mostrar['departamento'].'</td>
+                           <td>'.$mostrar['salario'].'</td>
+                           <td>'.$mostrar['activo'].'</td>
                        ';
 
                }
