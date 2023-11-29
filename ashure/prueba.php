@@ -32,7 +32,11 @@ else{
 }
 
 ////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-$empleado = "SELECT * FROM empleado $where";
+// $where
+$empleado = "SELECT *
+FROM empleado e
+INNER JOIN turno_horario th ON e.idempleado = th.empleado_idempleado $where";
+ 
 $resempleado = $conn->query($empleado);
 $departamento= $conn->query($empleado);
 
@@ -143,6 +147,7 @@ if(mysqli_num_rows($resempleado) == 0) {
             </div>
          </div>
       </nav>
+
       <section>
          <form method="post" action="">
             <input type="text" placeholder="Nombre..." name="xnombre"/>
@@ -163,18 +168,12 @@ if(mysqli_num_rows($resempleado) == 0) {
                <td>Nombre</td>
                <td>Apellido paterno</td>
                <td>Apellido materno</td>
-               <td>Teléfono</td>
-               <td>Genero</td>
-               <td>Calle</td>
-               <td>Ciudad</td>
-               <td>Estado</td>
-               <td>CP</td>
-               <td>Correo</td>
-               <td>Fecha contratacion</td>
-               <td>Cargo</td>
-               <td>Departamento</td>
-               <td>Salario</td>
-               <td>Activo</td>
+               <td>Nombre del turno</td>
+               <td>Hora de inicio</td>
+               <td>hora_fin</td>
+               <td>dias_semana</td>
+
+         
             </tr>
             <?php 
                while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
@@ -184,18 +183,10 @@ if(mysqli_num_rows($resempleado) == 0) {
                            <td>'.$mostrar['nombre'].'</td>
                            <td>'.$mostrar['apellido_paterno'].'</td>
                            <td>'.$mostrar['apellido_materno'].'</td>
-                           <td>'.$mostrar['telefono'].'</td>
-                           <td>'.$mostrar['genero'].'</td>
-                           <td>'.$mostrar['calle'].'</td>
-                           <td>'.$mostrar['ciudad'].'</td>
-                           <td>'.$mostrar['estado'].'</td>
-                           <td>'.$mostrar['cp'].'</td>
-                           <td>'.$mostrar['correo'].'</td>
-                           <td>'.$mostrar['fecha_contratacion'].'</td>
-                           <td>'.$mostrar['cargo'].'</td>
-                           <td>'.$mostrar['departamento'].'</td>
-                           <td>'.$mostrar['salario'].'</td>
-                           <td>'.$mostrar['activo'].'</td>
+                           <td>'.$mostrar['nombre_turno'].'</td>
+                           <td>'.$mostrar['hora_inicio'].'</td>
+                           <td>'.$mostrar['hora_fin'].'</td>
+                           <td>'.$mostrar['dias_semana'].'</td>
                            </tr>
                        ';
 
