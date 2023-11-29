@@ -149,8 +149,8 @@ if(mysqli_num_rows($resempleado) == 0) {
                }
                   ?>
             </select>
-            <button name="buscar" type="submit"> Buscar</button>
-            <button name="limpiar" type="submit" href="prueba.php" > limpiar</button>
+            <button type="submit" name="buscar" class="btn btn-outline-primary">Buscar</button>
+            <button type="submit" name="limpiar" href="prueba.php" class="btn btn-outline-primary">Limpiar</button>
          </form>
          <table>
             <tr>
