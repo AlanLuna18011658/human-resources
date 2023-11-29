@@ -115,6 +115,19 @@
          padding: - 35px 0 5px;
          color: #fff;
          }
+         .input-contenedor select{
+         width: 100%;
+         height: 50px;
+         background-color: transparent;
+         border: none;
+         outline: none;
+         font-size: 1rem;
+         padding: - 35px 0 5px;
+         color: #fff;  
+         }
+         .input-contenedor option{
+            color:black;
+         }
          .input-contenedor i{
          position: absolute;
          color: #fff;
@@ -216,8 +229,14 @@
                      </select>
                   </div>
                   <div class="input-contenedor">
-                     <input type="text" name="nombre_turno" required>
-                     <label for="nombre_turno"> Nombre del turno</label>
+
+                     <select name="nombre_turno" for="nombre_turno">
+                        <option value="turno">Elige un turno...</option>
+                        <option value="Matutino">Matutino</option>
+                        <option value="Vespertino">Vespertino</option>
+                        <option value="Nocturno">nocturno</option>
+
+                     </select>
                   </div>
                   <div class="input-contenedor">
                      <input type="text" name="hora_inicio" required>

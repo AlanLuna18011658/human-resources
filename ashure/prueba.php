@@ -1,9 +1,48 @@
 <?php
    include "conexion.php";
-   
-   $empleado = "SELECT * FROM empleado";
-   $resempleado = $conn->query($empleado);
+
+   ///////////// VARIABLES DE CONSULTA ///////////////
+$where="";
+// $nombre= $_POST['xnombre'];   
+// $departamento= $_POST['xdepartamento'];   
+
+if (isset($_POST['xnombre'])) {
+   $nombre = $_POST['xnombre'];
+} else {
+   $nombre = ""; // O un valor predeterminado
+}
+
+if (isset($_POST['xdepartamento'])) {
+   $departamento = $_POST['xdepartamento'];
+} else {
+   $departamento = ""; // O un valor predeterminado
+}
+
+/////////////// BOTON BUSCAR /////////////////////////
+if (isset($_POST['buscar'])){
+   if(empty($_POST['xdepartamento'])){
+      $where="where nombre like '".$nombre."%'";
+   }
+   else if(empty($_POST['xnombre'])){
+      $where="where departamento='".$departamento."'";
+   }
+else{
+   $where="where nombre like '".$nombre."%' and departamento='".$departamento."'";
+}
+}
+
+////////////// CONSULTA DE A LA BASE DE DATOS ////////   
+$empleado = "SELECT * FROM empleado $where";
+$resempleado = $conn->query($empleado);
+$departamento= $conn->query($empleado);
+
+$mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
+
+if(mysqli_num_rows($resempleado) == 0) {
+    $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
+}
    ?>
+   
 <!doctype html>
 <html lang="en">
    <head>
@@ -107,6 +146,16 @@
       <section>
          <form method="post" action="">
             <input type="text" placeholder="Nombre..." name="xnombre"/>
+            <select name="xdepartamento" id="">
+               <option value=""> Departamento</option>
+               <?php while ($resdepartamento = $departamento->fetch_array(MYSQLI_BOTH) ){
+                  
+                  echo '<option value="'.$resdepartamento['departamento'].'">'.$resdepartamento['departamento'].'</option>';
+               }
+                  ?>
+            </select>
+            <button name="buscar" type="submit"> Buscar</button>
+            <button name="limpiar" type="submit" href="prueba.php" > limpiar</button>
          </form>
          <table>
             <tr>
@@ -129,7 +178,8 @@
             </tr>
             <?php 
                while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
-                   echo'  <tr>
+
+                   echo'   <tr>
                            <td>'.$mostrar['idempleado'].'</td>
                            <td>'.$mostrar['nombre'].'</td>
                            <td>'.$mostrar['apellido_paterno'].'</td>
@@ -148,9 +198,16 @@
                            <td>'.$mostrar['activo'].'</td>
                            </tr>
                        ';
+
                }
                ?>
          </table>
+      <?php 
+       echo $mensaje;
+       ?>
       </section>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+   
    </body>
 </html>
