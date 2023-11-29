@@ -12,22 +12,22 @@ if (isset($_POST['xnombre'])) {
    $nombre = ""; // O un valor predeterminado
 }
 
-if (isset($_POST['xdepartamento'])) {
-   $departamento = $_POST['xdepartamento'];
+if (isset($_POST['xturno'])) {
+   $turno = $_POST['xturno'];
 } else {
-   $departamento = ""; // O un valor predeterminado
+   $turno = ""; // O un valor predeterminado
 }
 
 /////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
-   if(empty($_POST['xdepartamento'])){
+   if(empty($_POST['xturno'])){
       $where="where nombre like '".$nombre."%'";
    }
    else if(empty($_POST['xnombre'])){
-      $where="where departamento='".$departamento."'";
+      $where="where nombre_turno='".$turno."'";
    }
 else{
-   $where="where nombre like '".$nombre."%' and departamento='".$departamento."'";
+   $where="where nombre like '".$nombre."%' and nombre_turno='".$turno."'";
 }
 }
 
@@ -38,7 +38,7 @@ FROM empleado e
 INNER JOIN turno_horario th ON e.idempleado = th.empleado_idempleado $where";
  
 $resempleado = $conn->query($empleado);
-$departamento= $conn->query($empleado);
+$turno= $conn->query($empleado);
 
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
 
@@ -56,34 +56,78 @@ if(mysqli_num_rows($resempleado) == 0) {
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
-         body
-         {
-         background: url();
+          *{
+         font-family: 'Poppins', sans-serif;
+         margin:0;
+         padding:0;
          }
-         header 
-         {	
-         margin-top: 4%;
-         margin-right: 2%;
-         margin-left: 2%;
-         text-align: center;
+         body{
+            background-color: #330033;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23404' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23505'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
          }
-         section 
-         {
-         margin-right: 2%;
-         margin-left: 2%;
+         .tabla-container {
+  font-family: Arial, sans-serif;
+}
+
+.tabla-container table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+ 
+}
+
+.tabla-container th,
+.tabla-container td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+
+  
+}
+
+.tabla-container thead {
+  background-color: #f2f2f2;
+}
+
+.tabla-container tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+.mostrar{
+   color: #fff;
+   backdrop-filter: blur(4px);
+   
+}
+tr:hover {
+   background-color: #330055;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%23330055' cx='50' cy='0' r='50'/%3E%3Cg fill='%233a015d' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23410165' cx='50' cy='100' r='50'/%3E%3Cg fill='%2348026e' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23500376' cx='50' cy='200' r='50'/%3E%3Cg fill='%2357047e' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%235f0587' cx='50' cy='300' r='50'/%3E%3Cg fill='%2367068f' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%236f0798' cx='50' cy='400' r='50'/%3E%3Cg fill='%237707a0' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%238008a9' cx='50' cy='500' r='50'/%3E%3Cg fill='%238909b1' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%239109ba' cx='50' cy='600' r='50'/%3E%3Cg fill='%239a09c3' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23a309cb' cx='50' cy='700' r='50'/%3E%3Cg fill='%23ad09d4' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23b608dc' cx='50' cy='800' r='50'/%3E%3Cg fill='%23c007e5' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23c905ee' cx='50' cy='900' r='50'/%3E%3Cg fill='%23d303f6' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23D0F' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: contain;
+}
+.tr-mostrar{
+  
+}
+
+.botones-buscar{
+   height: 100px;
+
+}
+.select-contenedor select{
+
+         background-color: transparent;
+         border: none;
+         outline: none;
+         font-size: 1rem;
+         color: #fff;  
+         
+}
+
+.select-contenedor option{
+            color:black;
          }
-         .pad-basic
-         {
-         padding:.5%; 
-         }
-         .no-btm
-         {
-         margin-bottom:0%;
-         }
-         .btn-der
-         {
-         text-align: right;
-         }
+h1{
+   color: #fff;
+   text-align: center;
+}
       </style>
    </head>
    <body>
@@ -150,20 +194,25 @@ if(mysqli_num_rows($resempleado) == 0) {
       </nav>
 
       <section>
+      <div class="botones-buscar">
          <form method="post" action="">
+         <div class="select-contenedor">
             <h1>Consulta turnos y horarios</h1>
             <input type="text" placeholder="Nombre..." name="xnombre"/>
-            <select name="xdepartamento" id="">
-               <option value=""> Departamento</option>
-               <?php while ($resdepartamento = $departamento->fetch_array(MYSQLI_BOTH) ){
+            <select name="xturno" id="">
+               <option value=""> Turno...</option>
+               <?php while ($resturno = $turno->fetch_array(MYSQLI_BOTH) ){
                   
-                  echo '<option value="'.$resdepartamento['departamento'].'">'.$resdepartamento['departamento'].'</option>';
+                  echo '<option value="'.$resturno['nombre_turno'].'">'.$resturno['nombre_turno'].'</option>';
                }
                   ?>
             </select>
-            <button name="buscar" type="submit"> Buscar</button>
-            <button name="limpiar" type="submit" href="prueba.php" > limpiar</button>
+            <button name="buscar" type="submit" class="btn btn-primary"> Buscar</button>
+            <button name="limpiar" type="submit" href="prueba.php"  class="btn btn-primary"> limpiar</button>
+            </div>
          </form>
+         </div>
+         <div class="tabla-container">
          <table>
             <tr>
                <thead>
@@ -182,21 +231,25 @@ if(mysqli_num_rows($resempleado) == 0) {
             <?php 
                while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
 
-                   echo'   <tr>
-                           <td>'.$mostrar['idempleado'].'</td>
-                           <td>'.$mostrar['nombre'].'</td>
-                           <td>'.$mostrar['apellido_paterno'].'</td>
-                           <td>'.$mostrar['apellido_materno'].'</td>
-                           <td>'.$mostrar['nombre_turno'].'</td>
-                           <td>'.$mostrar['hora_inicio'].'</td>
-                           <td>'.$mostrar['hora_fin'].'</td>
-                           <td>'.$mostrar['dias_semana'].'</td>
+                   echo' 
+                     <tbody>
+                        <tr class="tr-mostrar">
+                           <td class="mostrar">'.$mostrar['idempleado'].'</td>
+                           <td class="mostrar">'.$mostrar['nombre'].'</td>
+                           <td class="mostrar">'.$mostrar['apellido_paterno'].'</td>
+                           <td class="mostrar">'.$mostrar['apellido_materno'].'</td>
+                           <td class="mostrar">'.$mostrar['nombre_turno'].'</td>
+                           <td class="mostrar">'.$mostrar['hora_inicio'].'</td>
+                           <td class="mostrar">'.$mostrar['hora_fin'].'</td>
+                           <td class="mostrar">'.$mostrar['dias_semana'].'</td>
                            </tr>
+                        </tbody>
                        ';
 
                }
                ?>
          </table>
+         </div>
       <?php 
        echo $mensaje;
        ?>

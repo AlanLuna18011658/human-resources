@@ -99,7 +99,7 @@ background-size: contain;
 }
 
 .botones-buscar{
-   height: 50px;
+   height: 100px;
 
 }
 .select-contenedor select{
@@ -115,6 +115,10 @@ background-size: contain;
 .select-contenedor option{
             color:black;
          }
+h1{
+   color: #fff;
+   text-align: center;
+}
       </style>
    </head>
    <body>
@@ -183,9 +187,8 @@ background-size: contain;
       <section>
       <div class="botones-buscar">
          <form method="post" action="">
-
-           
             <div class="select-contenedor">
+            <h1>Consulta Empleado</h1>
             <input type="text" placeholder="Nombre..." name="xnombre"/>
             <select name="xdepartamento" id="">
                <option value=""> Departamento</option>
