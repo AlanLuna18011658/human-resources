@@ -166,14 +166,16 @@ if(mysqli_num_rows($resempleado) == 0) {
          </form>
          <table>
             <tr>
-               <td>ID</td>
-               <td>Nombre</td>
-               <td>Apellido paterno</td>
-               <td>Apellido materno</td>
-               <td>Nombre del turno</td>
-               <td>Hora de inicio</td>
-               <td>hora_fin</td>
-               <td>dias_semana</td>
+               <thead>
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Apellido paterno</td>
+                  <td>Apellido materno</td>
+                  <td>Nombre del turno</td>
+                  <td>Hora de inicio</td>
+                  <td>hora_fin</td>
+                  <td>dias_semana</td>
+               </thead>
 
          
             </tr>
