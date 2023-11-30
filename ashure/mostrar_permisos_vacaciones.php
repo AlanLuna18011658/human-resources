@@ -12,22 +12,22 @@ if (isset($_POST['xnombre'])) {
    $nombre = ""; // O un valor predeterminado
 }
 
-if (isset($_POST['xturno'])) {
-   $turno = $_POST['xturno'];
+if (isset($_POST['xtipo'])) {
+   $tipo = $_POST['xtipo'];
 } else {
-   $turno = ""; // O un valor predeterminado
+   $tipo = ""; // O un valor predeterminado
 }
 
 /////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
-   if(empty($_POST['xturno'])){
+   if(empty($_POST['xtipo'])){
       $where="where nombre like '".$nombre."%'";
    }
    else if(empty($_POST['xnombre'])){
-      $where="where nombre_turno='".$turno."'";
+      $where="where tipo_permiso='".$tipo."'";
    }
 else{
-   $where="where nombre like '".$nombre."%' and nombre_turno='".$turno."'";
+   $where="where nombre like '".$nombre."%' and tipo_permiso='".$tipo."'";
 }
 }
 
@@ -35,10 +35,10 @@ else{
 // $where
 $empleado = "SELECT *
 FROM empleado e
-INNER JOIN turno_horario th ON e.idempleado = th.empleado_idempleado $where";
+INNER JOIN permisos_vacaciones pv ON e.idempleado = pv.empleado_idempleado $where";
  
 $resempleado = $conn->query($empleado);
-$turno= $conn->query($empleado);
+$tipo= $conn->query($empleado);
 
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
 
@@ -52,7 +52,7 @@ if(mysqli_num_rows($resempleado) == 0) {
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Ashure - Mostrar_empleados</title>
+      <title>Ashure - Mostrar_Permisos</title>
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
@@ -197,13 +197,13 @@ h1{
       <div class="botones-buscar">
          <form method="post" action="">
          <div class="select-contenedor">
-            <h1>Consulta turnos y horarios</h1>
+            <h1>Consulta permisos y vacaciones</h1>
             <input type="text" placeholder="Nombre..." name="xnombre"/>
-            <select name="xturno" id="">
-               <option value=""> Turno...</option>
-               <?php while ($resturno = $turno->fetch_array(MYSQLI_BOTH) ){
+            <select name="xtipo" id="">
+               <option value=""> Tipo...</option>
+               <?php while ($restipo = $tipo->fetch_array(MYSQLI_BOTH) ){
                   
-                  echo '<option value="'.$resturno['nombre_turno'].'">'.$resturno['nombre_turno'].'</option>';
+                  echo '<option value="'.$restipo['tipo_permiso'].'">'.$restipo['tipo_permiso'].'</option>';
                }
                   ?>
             </select>
@@ -239,11 +239,11 @@ h1{
                            <td class="mostrar">'.$mostrar['nombre'].'</td>
                            <td class="mostrar">'.$mostrar['apellido_paterno'].'</td>
                            <td class="mostrar">'.$mostrar['apellido_materno'].'</td>
-                           <td class="mostrar">'.$mostrar['nombre_turno'].'</td>
-                           <td class="mostrar">'.$mostrar['hora_inicio'].'</td>
-                           <td class="mostrar">'.$mostrar['hora_fin'].'</td>
-                           <td class="mostrar">'.$mostrar['dias_semana'].'</td>
-                           <td class="mostrar">'.$mostrar['dias_semana'].'</td>
+                           <td class="mostrar">'.$mostrar['tipo_permiso'].'</td>
+                           <td class="mostrar">'.$mostrar['fecha_inicio'].'</td>
+                           <td class="mostrar">'.$mostrar['fecha_fin'].'</td>
+                           <td class="mostrar">'.$mostrar['estado'].'</td>
+                           <td class="mostrar">'.$mostrar['motivo'].'</td>
                            </tr>
                         </tbody>
                        ';

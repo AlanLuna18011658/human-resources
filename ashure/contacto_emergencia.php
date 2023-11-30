@@ -10,7 +10,7 @@
        $correo_contacto = $conn->real_escape_string($_POST["correo_contacto"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
        
-       $sql = "INSERT INTO nomina (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
+       $sql = "INSERT INTO contacto_emergencia (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
                VALUES ('0','$nombre_contacto', ' $relacion_contacto', '$telefono_contacto', '$correo_contacto', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
