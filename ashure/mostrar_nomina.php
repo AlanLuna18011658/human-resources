@@ -1,52 +1,34 @@
 <?php
    include "conexion.php";
-
-   ///////////// VARIABLES DE CONSULTA ///////////////
 $where="";
-// $nombre= $_POST['xnombre'];   
-// $departamento= $_POST['xdepartamento'];   
-
 if (isset($_POST['xnombre'])) {
    $nombre = $_POST['xnombre'];
 } else {
    $nombre = ""; // O un valor predeterminado
 }
-
 if (isset($_POST['xfecha'])) {
    $fecha = $_POST['xfecha'];
 } else {
    $fecha = ""; // O un valor predeterminado
 }
-
-/////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
    if(empty($_POST['xfecha'])){
       $where="where nombre like '".$nombre."%'";
-   }
-   else if(empty($_POST['xnombre'])){
+   }else if(empty($_POST['xnombre'])){
       $where="where fecha_pago='".$fecha."'";
-   }
-else{
+   }else{
    $where="where nombre like '".$nombre."%' and fecha_pago='".$fecha."'";
 }
 }
-
-////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-// $where
 $empleado = "SELECT *
 FROM empleado e
 INNER JOIN nomina n ON e.idempleado = n.empleado_idempleado $where";
- 
 $resempleado = $conn->query($empleado);
 $fecha= $conn->query($empleado);
-
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
-
 if(mysqli_num_rows($resempleado) == 0) {
     $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
-}
-   ?>
-   
+}?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -202,7 +184,6 @@ h1{
             <select name="xfecha" id="">
                <option value=""> Fecha...</option>
                <?php while ($resfecha = $fecha->fetch_array(MYSQLI_BOTH) ){
-                  
                   echo '<option value="'.$resfecha['fecha_pago'].'">'.$resfecha['fecha_pago'].'</option>';
                }
                   ?>
@@ -225,11 +206,8 @@ h1{
                   <td>Deducciones</td>
                   <td>Monto neto</td>
                </thead>
-
-         
             </tr>
-            <?php 
-               while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
+            <?php while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
 
                    echo' 
                      <tbody>

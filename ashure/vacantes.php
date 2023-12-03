@@ -1,8 +1,6 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-   ?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $vacante = $conn->real_escape_string($_POST["vacante"]);
        $departamento = $conn->real_escape_string($_POST["departamento"]);
@@ -16,8 +14,7 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   }
-   ?>
+   }?>
 <!doctype html>
 <html lang="en">
    <head>

@@ -1,24 +1,16 @@
 <?php
    include "conexion.php";
-
-   ///////////// VARIABLES DE CONSULTA ///////////////
 $where="";
-// $nombre= $_POST['xnombre'];   
-// $departamento= $_POST['xdepartamento'];   
-
 if (isset($_POST['xnombre'])) {
    $nombre = $_POST['xnombre'];
 } else {
    $nombre = ""; // O un valor predeterminado
 }
-
 if (isset($_POST['xnombrec'])) {
    $nombrec = $_POST['xnombrec'];
 } else {
    $nombrec = ""; // O un valor predeterminado
 }
-
-/////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
    if(empty($_POST['xnombrec'])){
       $where="where nombre like '".$nombre."%'";
@@ -30,23 +22,15 @@ else{
    $where="where nombre like '".$nombre."%' and nombre_contacto='".$nombrec."'";
 }
 }
-
-////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-// $where
 $empleado = "SELECT *
 FROM empleado e
 INNER JOIN contacto_emergencia ce ON e.idempleado = ce.empleado_idempleado $where";
- 
 $resempleado = $conn->query($empleado);
 $nombrec= $conn->query($empleado);
-
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
-
 if(mysqli_num_rows($resempleado) == 0) {
     $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
-}
-   ?>
-   
+}?>
 <!doctype html>
 <html lang="en">
    <head>

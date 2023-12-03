@@ -1,52 +1,34 @@
 <?php
    include "conexion.php";
-
-   ///////////// VARIABLES DE CONSULTA ///////////////
 $where="";
-// $nombre= $_POST['xnombre'];   
-// $departamento= $_POST['xdepartamento'];   
-
 if (isset($_POST['xnombre'])) {
    $nombre = $_POST['xtipo'];
 } else {
    $nombre = ""; // O un valor predeterminado
 }
-
 if (isset($_POST['xtipo'])) {
    $tipo = $_POST['xtipo'];
 } else {
    $tipo = ""; // O un valor predeterminado
 }
-
-/////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
    if(empty($_POST['xtipo'])){
       $where="where nombre like '".$nombre."%'";
-   }
-   else if(empty($_POST['xnombre'])){
+   }else if(empty($_POST['xnombre'])){
       $where="where tipo_retiro='".$tipo."'";
-   }
-else{
+   }else{
    $where="where nombre like '".$nombre."%' and tipo_retiro='".$tipo."'";
 }
 }
-
-////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-// $where
 $empleado = "SELECT *
 FROM empleado e
 INNER JOIN retiro_jubilacion rj ON e.idempleado = rj.empleado_idempleado $where";
- 
 $resempleado = $conn->query($empleado);
 $tipo= $conn->query($empleado);
-
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
-
 if(mysqli_num_rows($resempleado) == 0) {
     $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
-}
-   ?>
-   
+}?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -201,8 +183,7 @@ h1{
             <input type="text" placeholder="Nombre..." name="xnombre"/>
             <select name="xtipo" id="">
                <option value=""> Tipo...</option>
-               <?php while ($restipo = $tipo->fetch_array(MYSQLI_BOTH) ){
-                  
+               <?php while ($restipo = $tipo->fetch_array(MYSQLI_BOTH) ){  
                   echo '<option value="'.$restipo['tipo_retiro'].'">'.$restipo['tipo_retiro'].'</option>';
                }
                   ?>
@@ -225,11 +206,8 @@ h1{
                   <td>Fecha de retiro</td>
                  
                </thead>
-
-         
             </tr>
-            <?php 
-               while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
+            <?php while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
 
                    echo' 
                      <tbody>
@@ -242,6 +220,7 @@ h1{
                            <td class="mostrar">'.$mostrar['tipo_retiro'].'</td>
                            <td class="mostrar">'.$mostrar['fecha_retiro'].'</td>
                            </tr>
+                           
                         </tbody>
                        ';
 

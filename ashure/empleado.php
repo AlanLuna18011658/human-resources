@@ -1,10 +1,7 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      #tabla usuario
        $nombre = $conn->real_escape_string($_POST["nombre"]);
        $apellido_paterno = $conn->real_escape_string($_POST["apellido_paterno"]);
        $apellido_materno = $conn->real_escape_string($_POST["apellido_materno"]);
@@ -20,7 +17,6 @@
        $departamento = $conn->real_escape_string($_POST["departamento"]);
        $salario = $conn->real_escape_string($_POST["salario"]);
        $activo = $conn->real_escape_string($_POST["activo"]);
-
        $sql = "INSERT INTO empleado (idempleado, nombre, apellido_paterno, apellido_materno, telefono, genero, calle, ciudad, estado, cp, correo, fecha_contratacion, cargo, departamento, salario, activo) 
                VALUES ('0','$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$genero', '$calle', '$ciudad', '$estado', '$cp', '$correo', '$fecha_contratacion', '$cargo','$departamento' ,'$salario', '$activo')";
        if ($conn->query($sql) === TRUE) {
@@ -28,7 +24,6 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-
    }
    $conn->close();
 ?>

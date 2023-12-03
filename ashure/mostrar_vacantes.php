@@ -1,52 +1,34 @@
 <?php
    include "conexion.php";
-
-   ///////////// VARIABLES DE CONSULTA ///////////////
 $where="";
-// $nombre= $_POST['xnombre'];   
-// $departamento= $_POST['xdepartamento'];   
-
 if (isset($_POST['xnombre'])) {
    $nombre = $_POST['xnombre'];
 } else {
    $nombre = ""; // O un valor predeterminado
 }
-
 if (isset($_POST['xvacantes'])) {
    $vacantes = $_POST['xvacantes'];
 } else {
    $vacantes = ""; // O un valor predeterminado
 }
-
-/////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
    if(empty($_POST['xvacantes'])){
       $where="where nombre like '".$nombre."%'";
-   }
-   else if(empty($_POST['xnombre'])){
+   }else if(empty($_POST['xnombre'])){
       $where="where vacante='".$vacantes."'";
-   }
-else{
+   }else{
    $where="where nombre like '".$nombre."%' and vacante='".$vacantes."'";
 }
 }
-
-////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-// $where
 $empleado = "SELECT *
 FROM empleado e
 INNER JOIN vacantes v ON e.idempleado = v.empleado_idempleado $where";
- 
 $resempleado = $conn->query($empleado);
 $vacantes= $conn->query($empleado);
-
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
-
 if(mysqli_num_rows($resempleado) == 0) {
     $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
-}
-   ?>
-   
+}?> 
 <!doctype html>
 <html lang="en">
    <head>
@@ -202,7 +184,6 @@ h1{
             <select name="xvacantes" id="">
                <option value=""> vacantes...</option>
                <?php while ($resvacantes = $vacantes->fetch_array(MYSQLI_BOTH) ){
-                  
                   echo '<option value="'.$resvacantes['vacante'].'">'.$resvacantes['vacante'].'</option>';
                }
                   ?>
@@ -225,11 +206,8 @@ h1{
                   <td>Fecha de cambio</td>
                 
                </thead>
-
-         
             </tr>
-            <?php 
-               while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
+            <?php  while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
 
                    echo' 
                      <tbody>
@@ -242,6 +220,7 @@ h1{
                            <td class="mostrar">'.$mostrar['departamento'].'</td>
                            <td class="mostrar">'.$mostrar['fecha_cambio'].'</td>
                            </tr>
+                           
                         </tbody>
                        ';
 

@@ -1,8 +1,6 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-   ?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $tipo_permiso = $conn->real_escape_string($_POST["tipo_permiso"]);
        $fecha_inicio = $conn->real_escape_string($_POST["fecha_inicio"]);
@@ -10,17 +8,13 @@
        $estado = $conn->real_escape_string($_POST["estado"]);
        $motivo = $conn->real_escape_string($_POST["motivo"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
-       
        $sql = "INSERT INTO permisos_vacaciones (idpermisos_vacaciones, tipo_permiso, fecha_inicio, fecha_fin, estado, motivo, empleado_idempleado) 
                VALUES ('0','$tipo_permiso', ' $fecha_inicio', '$fecha_fin', '$estado', '$motivo', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
-           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
-       }
-   }
-   
-   ?>
+           echo "Error al insertar el registro, intentelo nuevamente." . $conn->error; }
+   }?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -201,7 +195,6 @@
             </div>
          </div>
       </nav>
-      
       <form method="POST" action="">
          <h1 id="uno"> Permisos y vacaciones</h1>
          <section>

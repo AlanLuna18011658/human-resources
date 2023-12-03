@@ -1,14 +1,10 @@
-
 <?php
 include 'conexion.php';
-?>
-<?php
    session_start();
    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
        $correo = $_POST['correo'];
        $contrasena = $_POST['contrasena'];
        $contrasenaEncriptada = hash('sha256', $contrasena);
-       
        $consulta = "SELECT idUsuario FROM usuario WHERE correo = '$correo' AND contraseña = '$contrasenaEncriptada'";
        $resultado = $conn->query($consulta);
        if ($resultado->num_rows == 1) {

@@ -1,12 +1,7 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-?>
-<?php
- 
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
-      #tabla usuario
-       
        $tipo_sangre = $conn->real_escape_string($_POST["tipo_sangre"]);
        $Alergias = $conn->real_escape_string($_POST["alergias"]);
        $enf_cron = $conn->real_escape_string($_POST["enf_cron"]);
@@ -15,7 +10,6 @@
        $tel_med = $conn->real_escape_string($_POST["tel_med"]);
        $ult_rev_med = $conn->real_escape_string($_POST["ult_rev_med"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
-       
        $sql = "INSERT INTO salud (idsalud,tipo_sangre, alergias, enf_cronicas, historial_medico, medico_cabecera, contacto_medico, ultima_revision_fecha, empleado_idempleado) 
                VALUES ('0','$tipo_sangre', ' $Alergias', '$enf_cron', '$h_med', '$med_cabecera', '$tel_med', '$ult_rev_med', '$id_foranea ')";
        if ($conn->query($sql) === TRUE) {
@@ -23,9 +17,7 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   }
-   
-?>
+   }?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -35,7 +27,6 @@
       <link rel="icon" href="ashure.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <style>
-        /* css */
       @import url();
       *{
       font-family: 'Poppins', sans-serif;
@@ -121,15 +112,13 @@
       outline: none;
       font-size: 1rem;
       padding: - 35px 0 5px;
-      color: #fff;
-      }
+      color: #fff;}
       .input-contenedor i{
       position: absolute;
       color: #fff;
       font-size: 1.6rem;
       top: 19px
-      right: 8px;
-      }
+      right: 8px; }
       button{
       width: 100%;
       height: 45px;
@@ -206,7 +195,6 @@
             </div>
          </div>
       </nav>
-      <!-- formulario -->
       <form method="POST" action="">
          <h1 id="uno"> Datos de salud</h1>
          <section>
@@ -215,7 +203,6 @@
                   <div class="input-contenedor">
                      <select type="text" name="id_foranea" required>
                         <option value="id_foranea" id="empleado">Elige un empleado...
-                        
                            <?php
                            $sql = $conn-> query("SELECT * FROM empleado");
                            while($fila=$sql->fetch_array()){

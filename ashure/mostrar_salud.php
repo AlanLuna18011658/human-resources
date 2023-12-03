@@ -1,52 +1,34 @@
 <?php
    include "conexion.php";
-
-   ///////////// VARIABLES DE CONSULTA ///////////////
 $where="";
-// $nombre= $_POST['xnombre'];   
-// $departamento= $_POST['xdepartamento'];   
-
 if (isset($_POST['xnombre'])) {
    $nombre = $_POST['xnombre'];
 } else {
    $nombre = ""; // O un valor predeterminado
 }
-
 if (isset($_POST['xtsangre'])) {
    $tsangre = $_POST['xtsangre'];
 } else {
    $tsangre = ""; // O un valor predeterminado
 }
-
-/////////////// BOTON BUSCAR /////////////////////////
 if (isset($_POST['buscar'])){
    if(empty($_POST['xtsangre'])){
       $where="where nombre like '".$nombre."%'";
-   }
-   else if(empty($_POST['xnombre'])){
+   }else if(empty($_POST['xnombre'])){
       $where="where tipo_sangre='".$tsangre."'";
-   }
-else{
+   }else{
    $where="where nombre like '".$nombre."%' and tipo_sangre='".$tsangre."'";
 }
 }
-
-////////////// CONSULTA DE A LA BASE DE DATOS ////////   
-// $where
 $empleado = "SELECT *
 FROM empleado e
 INNER JOIN salud s ON e.idempleado = s.empleado_idempleado $where";
- 
 $resempleado = $conn->query($empleado);
 $tsangre= $conn->query($empleado);
-
 $mensaje = ""; // Inicializa la variable $mensaje con un valor predeterminado
-
 if(mysqli_num_rows($resempleado) == 0) {
     $mensaje = "<h1>No hay registros que coincidan con la búsqueda.</h1>";
-}
-   ?>
-   
+} ?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -201,8 +183,7 @@ h1{
             <input type="text" placeholder="Nombre..." name="xnombre"/>
             <select name="xtsangre" id="">
                <option value=""> Tipo_sangre...</option>
-               <?php while ($restsangre = $tsangre->fetch_array(MYSQLI_BOTH) ){
-                  
+               <?php while ($restsangre = $tsangre->fetch_array(MYSQLI_BOTH) ){ 
                   echo '<option value="'.$restsangre['tipo_sangre'].'">'.$restsangre['tipo_sangre'].'</option>';
                }
                   ?>
@@ -228,12 +209,8 @@ h1{
                   <td>Telefon médico</td>
                   <td>Ultima revision médica(fecha)</td>
                </thead>
-
-         
             </tr>
-            <?php 
-               while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
-
+            <?php while ($mostrar = $resempleado->fetch_array(MYSQLI_BOTH) ){
                    echo' 
                      <tbody>
                         <tr class="tr-mostrar">
@@ -251,7 +228,6 @@ h1{
                            </tr>
                         </tbody>
                        ';
-
                }
                ?>
          </table>

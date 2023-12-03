@@ -1,15 +1,12 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-   ?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $nombre_contacto = $conn->real_escape_string($_POST["nombre_contacto"]);
        $relacion_contacto = $conn->real_escape_string($_POST["relacion_contacto"]);
        $telefono_contacto = $conn->real_escape_string($_POST["telefono_contacto"]);
        $correo_contacto = $conn->real_escape_string($_POST["correo_contacto"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
-       
        $sql = "INSERT INTO contacto_emergencia (idcontacto_emergencia, nombre_contacto, relacion_contacto, telefono_contacto, correo_contacto, empleado_idempleado) 
                VALUES ('0','$nombre_contacto', ' $relacion_contacto', '$telefono_contacto', '$correo_contacto', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
@@ -17,8 +14,7 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   }
-   ?>
+   }?>
 <!doctype html>
 <html lang="en">
    <head>

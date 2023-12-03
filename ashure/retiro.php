@@ -1,23 +1,20 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-   ?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $motivo_retiro = $conn->real_escape_string($_POST["motivo_retiro"]);
        $tipo_retiro = $conn->real_escape_string($_POST["tipo_retiro"]);
        $fecha_retiro = $conn->real_escape_string($_POST["fecha_retiro"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
-       
        $sql = "INSERT INTO retiro_jubilacion (idjubilacion, motivo_retiro, tipo_retiro, fecha_retiro, empleado_idempleado) 
                VALUES ('0','$motivo_retiro', ' $tipo_retiro', '$fecha_retiro', '$id_foranea')";
+       
        if ($conn->query($sql) === TRUE) {
            echo "Ashure - ¡Registro insertado correctamente!";
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   }
-   ?>
+   }?>
 <!doctype html>
 <html lang="en">
    <head>

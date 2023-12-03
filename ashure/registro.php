@@ -1,8 +1,5 @@
-
 <?php
 include 'conexion.php';
-?>
-<?php
    session_start();
    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
        $nombre = $_POST['nombre'];
@@ -18,7 +15,6 @@ include 'conexion.php';
        } else {
            $contrasenaEncriptada = hash('sha256', $contrasenaRegistro);
            $consultaRegistro = "INSERT INTO usuario (idUsuario, nombre, apellido_paterno, apellido_materno, correo, contraseña) VALUES ('0','$nombre','$a_paterno', '$a_materno', '$correoRegistro', '$contrasenaEncriptada')";
-   
            if ($conn->query($consultaRegistro) === TRUE) {
                header("Location: login.php");
                exit();

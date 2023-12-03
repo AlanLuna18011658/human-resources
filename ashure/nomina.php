@@ -1,15 +1,12 @@
 <?php
    require_once "validar_sesion.php";
    include 'conexion.php';
-   ?>
-<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
        $fecha_pago = $conn->real_escape_string($_POST["fecha_pago"]);
        $monto_bruto = $conn->real_escape_string($_POST["monto_bruto"]);
        $deducciones = $conn->real_escape_string($_POST["deducciones"]);
        $monto_neto = $conn->real_escape_string($_POST["monto_neto"]);
        $id_foranea = $conn->real_escape_string($_POST["id_foranea"]);
-       
        $sql = "INSERT INTO nomina (idnomina, fecha_pago, monto_bruto, deducciones, monto_neto, empleado_idempleado) 
                VALUES ('0','$fecha_pago', ' $monto_bruto', '$deducciones', '$monto_neto', '$id_foranea')";
        if ($conn->query($sql) === TRUE) {
@@ -17,9 +14,7 @@
        } else {
            echo "Error al insertar el registro, intentelo nuevamente." . $conn->error;
        }
-   }
-   
-   ?>
+   }?>
 <!doctype html>
 <html lang="en">
    <head>
