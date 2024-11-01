@@ -1,4 +1,2 @@
-# Human-Resources | Ashure
-18011162, 18011658.
-
-Gestión de Proyectos de Software.
+## Project oriented to a human resources manager for the subject of Software Project Management.
+*Tecnológico Superior de Jalisco UA Zapopan.*
